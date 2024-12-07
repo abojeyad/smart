@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متابعة أهداف المبيعات</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>متابعة أهداف المبيعات</h1>
+	<div id="current-month" style="text-align: center; font-size: 1.2rem; margin-bottom: 20px;">
+    <!-- سيتم تحديث النص بواسطة JavaScript -->
+</div>
+
+    <section id="weekly-goals">
+		<!-- الهدف الشهري -->
+		<section id="monthly-goal" class="week-block">
+			<h2>الهدف الشهري</h2>
+			<p>الهدف الشهري: <span id="monthly-target">0</span></p>
+			<p>المبيعات المحققة: <span id="monthly-achieved">0</span></p>
+			<p>نسبة التحقيق: <span id="monthly-percentage">0%</span></p>
+		</section>
+
+		<!-- الأسبوع الأول -->
+		<div class="week-block">
+			<h3>الأسبوع الأول (1 - 8)</h3>
+			<label>هدف الأسبوع الأول: <input type="number" id="week1-target"></label>
+			<label>المبيعات المحققة: <input type="number" id="week1-achieved"></label>
+			<p>نسبة التحقيق: <span id="week1-percentage">0%</span></p>
+			<p>الهدف اليومي المتبقي: <span id="week1-daily-goal">0</span></p>
+		</div>
+
+		<!-- الأسبوع الثاني -->
+		<div class="week-block">
+			<h3>الأسبوع الثاني (9 - 16)</h3>
+			<p>المبلغ المرحل من الأسبوع الأول: <span id="week2-carried-over">0</span></p>
+			<label>هدف الأسبوع الثاني: <input type="number" id="week2-target"></label>
+			<label>المبيعات المحققة: <input type="number" id="week2-achieved"></label>
+			<p>نسبة التحقيق: <span id="week2-percentage">0%</span></p>
+			<p>الهدف اليومي المتبقي: <span id="week2-daily-goal">0</span></p>
+		</div>
+
+		<!-- الأسبوع الثالث -->
+		<div class="week-block">
+			<h3>الأسبوع الثالث (17 - 24)</h3>
+			<p>المبلغ المرحل من الأسبوع الثاني: <span id="week3-carried-over">0</span></p>
+			<label>هدف الأسبوع الثالث: <input type="number" id="week3-target"></label>
+			<label>المبيعات المحققة: <input type="number" id="week3-achieved"></label>
+			<p>نسبة التحقيق: <span id="week3-percentage">0%</span></p>
+			<p>الهدف اليومي المتبقي: <span id="week3-daily-goal">0</span></p>
+		</div>
+
+		<!-- الأسبوع الرابع -->
+		<div class="week-block">
+			<h3>الأسبوع الرابع (25 - نهاية الشهر)</h3>
+			<p>المبلغ المرحل من الأسبوع الثالث: <span id="week4-carried-over">0</span></p>
+			<label>هدف الأسبوع الرابع: <input type="number" id="week4-target"></label>
+			<label>المبيعات المحققة: <input type="number" id="week4-achieved"></label>
+			<p>نسبة التحقيق: <span id="week4-percentage">0%</span></p>
+			<p>الهدف اليومي المتبقي: <span id="week4-daily-goal">0</span></p>
+		</div>
+
+    </section>
+
+    <!-- زر حذف البيانات -->
+    <button id="clearDataButton">تصفير كل البيانات</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
