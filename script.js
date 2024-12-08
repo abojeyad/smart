@@ -31,8 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const monthlyAchievedElement = document.getElementById("monthly-achieved");
     const monthlyPercentageElement = document.getElementById("monthly-percentage");
 
+    // تحديد الأيام المتبقية بناءً على النطاق الأسبوعي
+    function calculateRemainingDays(startDay, endDay) {
+        const today = new Date().getDate();
+        if (today < startDay) return endDay - startDay + 1; // إذا كان اليوم الحالي قبل الأسبوع
+        if (today > endDay) return 0; // إذا كان الأسبوع قد انتهى
+        return endDay - today + 1; // عدد الأيام المتبقية
+    }
+
     // تحديث القيم الأسبوعية
-    function updateWeek(weekTargetInput, weekAchievedInput, weekPercentage, weekDailyGoal, remainingDays, carriedOver = 0) {
+    function updateWeek(weekTargetInput, weekAchievedInput, weekPercentage, weekDailyGoal, startDay, endDay, carriedOver = 0) {
         const target = parseFloat(weekTargetInput.value) || 0;
         const achieved = parseFloat(weekAchievedInput.value) || 0;
 
@@ -43,9 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const percentage = totalRequired > 0 ? ((achieved / totalRequired) * 100).toFixed(2) : 0;
         weekPercentage.textContent = `${percentage}%`;
 
-        // حساب الهدف اليومي
+        // حساب الهدف اليومي بناءً على الأيام المتبقية
         const remainingGoal = totalRequired - achieved > 0 ? totalRequired - achieved : 0;
-        const dailyGoal = remainingGoal / remainingDays;
+        const remainingDays = calculateRemainingDays(startDay, endDay);
+        const dailyGoal = remainingDays > 0 ? remainingGoal / remainingDays : 0;
         weekDailyGoal.textContent = dailyGoal.toFixed(2);
 
         return remainingGoal; // إرجاع المتبقي لترحيله إلى الأسبوع التالي
@@ -58,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
             week1AchievedInput,
             week1Percentage,
             week1DailyGoal,
+            1,
             8
         );
         week2CarriedOver.textContent = week1Remaining.toFixed(2);
@@ -67,7 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
             week2AchievedInput,
             week2Percentage,
             week2DailyGoal,
-            8,
+            9,
+            16,
             week1Remaining
         );
         week3CarriedOver.textContent = week2Remaining.toFixed(2);
@@ -77,13 +88,31 @@ document.addEventListener("DOMContentLoaded", function () {
             week3AchievedInput,
             week3Percentage,
             week3DailyGoal,
-            8,
+            17,
+            24,
             week2Remaining
         );
         week4CarriedOver.textContent = week3Remaining.toFixed(2);
 
         // تحديث الأسبوع الرابع بناءً على عدد الأيام المتبقية
         updateWeek4(week3Remaining);
+    }
+
+    // حساب الأسبوع الرابع بناءً على الأيام المتبقية في الشهر
+    function updateWeek4(week3Remaining) {
+        const currentMonth = new Date().getMonth(); // الشهر الحالي
+        const currentYear = new Date().getFullYear(); // السنة الحالية
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate(); // عدد أيام الشهر
+
+        updateWeek(
+            week4TargetInput,
+            week4AchievedInput,
+            week4Percentage,
+            week4DailyGoal,
+            25,
+            daysInMonth,
+            week3Remaining
+        );
     }
 
     // تحديث القيم الشهرية
@@ -106,23 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
         monthlyTargetElement.textContent = totalTarget.toFixed(2);
         monthlyAchievedElement.textContent = totalAchieved.toFixed(2);
         monthlyPercentageElement.textContent = `${percentage}%`;
-    }
-
-    // حساب الأسبوع الرابع بناءً على الأيام المتبقية في الشهر
-    function updateWeek4(week3Remaining) {
-        const currentMonth = new Date().getMonth(); // الشهر الحالي
-        const currentYear = new Date().getFullYear(); // السنة الحالية
-        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate(); // عدد أيام الشهر
-        const remainingDaysInWeek4 = daysInMonth - 24; // الأيام المتبقية في الأسبوع الرابع
-
-        updateWeek(
-            week4TargetInput,
-            week4AchievedInput,
-            week4Percentage,
-            week4DailyGoal,
-            remainingDaysInWeek4,
-            week3Remaining
-        );
     }
 
     // حفظ البيانات في Local Storage
@@ -201,19 +213,20 @@ document.addEventListener("DOMContentLoaded", function () {
     loadFromLocalStorage();
     addInputListeners();
 });
-document.addEventListener("DOMContentLoaded", function () {
-    const currentMonthElement = document.getElementById("current-month");
 
-    // الحصول على اسم الشهر الحالي وعدد أيامه
-    const currentDate = new Date();
-    const monthNames = [
-        "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
-        "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
-    ];
-    const currentMonthName = monthNames[currentDate.getMonth()];
-    const currentYear = currentDate.getFullYear();
-    const daysInMonth = new Date(currentYear, currentDate.getMonth() + 1, 0).getDate();
+        // JavaScript لإضافة اسم الشهر وعدد الأيام
+        const monthInfo = document.getElementById("month-info");
+        const now = new Date();
+        const monthNames = [
+            "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
+            "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+        ];
 
-    // تحديث النص في الصفحة
-    currentMonthElement.textContent = `الشهر الحالي: ${currentMonthName} | عدد الأيام: ${daysInMonth}`;
-});
+        // اسم الشهر الحالي
+        const monthName = monthNames[now.getMonth()];
+
+        // عدد الأيام في الشهر الحالي
+        const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+
+        // عرض المعلومات
+        monthInfo.textContent = `الشهر الحالي: ${monthName} - عدد الأيام: ${daysInMonth}`;

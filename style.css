@@ -10,6 +10,13 @@ body {
     text-align: right; /* محاذاة النص إلى اليمين */
 
 }
+#month-info {
+    padding: auto;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+
+}
 
 h1 {
     text-align: center;
