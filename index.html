@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة الهبوط</title>
+    <title>Smart Life</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,6 @@
             background-color: #f9f9f9;
         }
 
-        /* الهيدر */
         header {
             display: flex;
             justify-content: space-between;
@@ -32,7 +31,41 @@
             font-size: 18px;
         }
 
-        /* الجدول */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #f1f1f1;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #007BFF;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            background-color: #e6f0ff;
+        }
+
+        .tab.active {
+            border-bottom: 2px solid #007BFF;
+            background-color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         .pricing-table {
             width: 100%;
             border-collapse: collapse;
@@ -61,133 +94,154 @@
             color: red;
         }
 
-        .pricing-table td .checkmark {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ddd;
-            border-radius: 3px;
-            background-color: #ccc;
-            position: relative;
-        }
-
-        .pricing-table td .checkmark.active {
-            background-color: #007BFF;
-            border-color: #007BFF;
-        }
-
-        .pricing-table td .checkmark.active::after {
-            content: '\2713';
-            color: white;
-            font-size: 14px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* تحسينات للموبايل */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab {
+                flex: 1 1 50%;
                 text-align: center;
-            }
-
-            .pricing-table {
-                font-size: 14px;
-            }
-
-            .pricing-table th, .pricing-table td {
-                padding: 8px;
-            }
-
-            .pricing-table th {
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .pricing-table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-
-            .pricing-table th, .pricing-table td {
-                font-size: 12px;
-                padding: 5px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- الهيدر -->
 <header>
-    <div class="logo">اسم الشركة</div>
-    <div class="contact">📞 123-456-789</div>
+    <div class="logo">SMART LIFE</div>
+    <div class="contact">📞 0568954677</div>
 </header>
 
-<!-- الجدول -->
-<table class="pricing-table">
-    <thead>
-        <tr>
-            <th>البند بالعربية</th>
-            <th>الباقة المصغرة MINI<br><span class="price">$20</span><br><span class="discount">خصم 5%</span></th>
-            <th>الباقة الأساسية POS<br><span class="price">$50</span><br><span class="discount">خصم 10%</span></th>
-            <th>الباقة المتقدمة SLAS<br><span class="price">$100</span><br><span class="discount">خصم 15%</span></th>
-            <th>الباقة الكاملة PRO<br><span class="price">$200</span><br><span class="discount">خصم 20%</span></th>
-            <th>البند بالإنجليزية</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- سيتم ملء البيانات هنا بواسطة جافا سكربت -->
-    </tbody>
-</table>
+<!-- التابات -->
+<div class="tabs">
+    <div class="tab active" data-tab="erp">النظام المحاسبي ونقاط البيع: SMART ERP</div>
+    <div class="tab" data-tab="rc">نظام المطاعم والكافيهات: SMART R&C</div>
+    <div class="tab" data-tab="ngo">نظام الجمعيات الخيرية: SMART NGO</div>
+    <div class="tab" data-tab="hr">نظام الموارد البشرية: SMART HR</div>
+</div>
+
+<!-- المحتوى الخاص بكل تاب -->
+<div id="erp" class="tab-content active">
+    <table class="pricing-table">
+        <thead>
+            <tr>
+                <th>البند بالعربية</th>
+                <th>الباقة المصغرة MINI<br><span class="price">$20</span><br><span class="discount">خصم 5%</span></th>
+                <th>الباقة الأساسية POS<br><span class="price">$50</span><br><span class="discount">خصم 10%</span></th>
+                <th>الباقة المتقدمة SLAS<br><span class="price">$100</span><br><span class="discount">خصم 15%</span></th>
+                <th>الباقة الكاملة PRO<br><span class="price">$200</span><br><span class="discount">خصم 20%</span></th>
+                <th>البند بالإنجليزية</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div id="rc" class="tab-content">
+    <table class="pricing-table">
+        <thead>
+            <tr>
+                <th>البند بالعربية</th>
+                <th>الباقة المصغرة MINI<br><span class="price">$20</span><br><span class="discount">خصم 5%</span></th>
+                <th>الباقة الأساسية POS<br><span class="price">$50</span><br><span class="discount">خصم 10%</span></th>
+                <th>الباقة المتقدمة SLAS<br><span class="price">$100</span><br><span class="discount">خصم 15%</span></th>
+                <th>الباقة الكاملة PRO<br><span class="price">$200</span><br><span class="discount">خصم 20%</span></th>
+                <th>البند بالإنجليزية</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div id="ngo" class="tab-content">
+    <table class="pricing-table">
+        <thead>
+            <tr>
+                <th>البند بالعربية</th>
+                <th>الباقة المصغرة MINI<br><span class="price">$20</span><br><span class="discount">خصم 5%</span></th>
+                <th>الباقة الأساسية POS<br><span class="price">$50</span><br><span class="discount">خصم 10%</span></th>
+                <th>الباقة المتقدمة SLAS<br><span class="price">$100</span><br><span class="discount">خصم 15%</span></th>
+                <th>الباقة الكاملة PRO<br><span class="price">$200</span><br><span class="discount">خصم 20%</span></th>
+                <th>البند بالإنجليزية</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div id="hr" class="tab-content">
+    <table class="pricing-table">
+        <thead>
+            <tr>
+                <th>البند بالعربية</th>
+                <th>الباقة المصغرة MINI<br><span class="price">$20</span><br><span class="discount">خصم 5%</span></th>
+                <th>الباقة الأساسية POS<br><span class="price">$50</span><br><span class="discount">خصم 10%</span></th>
+                <th>الباقة المتقدمة SLAS<br><span class="price">$100</span><br><span class="discount">خصم 15%</span></th>
+                <th>الباقة الكاملة PRO<br><span class="price">$200</span><br><span class="discount">خصم 20%</span></th>
+                <th>البند بالإنجليزية</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
 
 <script>
-  window.onload = function() {
-    fetch('data.json')  // تحميل ملف JSON
-      .then(response => response.json())
-      .then(data => {
-        const items = data.items;
-        buildTable(items);
-      })
-      .catch(error => console.error('Error loading JSON file:', error));
-  };
+    // التنقل بين التابات
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            // إزالة التفعيل عن جميع التابات والمحتويات
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-  function buildTable(items) {
-    const table = document.querySelector('.pricing-table tbody');
-    table.innerHTML = ''; // مسح الجدول القديم
-
-    items.forEach(item => {
-      const tr = document.createElement('tr');
-
-      // إضافة العمود بالعربية
-      const tdArabic = document.createElement('td');
-      tdArabic.textContent = item.arabic;
-      tr.appendChild(tdArabic);
-
-      // إضافة الأعمدة الخاصة بكل باقة
-      ['mini', 'pos', 'slas', 'pro'].forEach(plan => {
-        const td = document.createElement('td');
-        const checkmark = document.createElement('div');
-        checkmark.classList.add('checkmark');
-        if (item.plans[plan]) {
-          checkmark.classList.add('active');
-        }
-        td.appendChild(checkmark);
-        tr.appendChild(td);
-      });
-
-      // إضافة العمود بالإنجليزية
-      const tdEnglish = document.createElement('td');
-      tdEnglish.textContent = item.english;
-      tr.appendChild(tdEnglish);
-
-      table.appendChild(tr);
+            // تفعيل التاب الحالي ومحتواه
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        });
     });
-  }
+
+    // تحميل البيانات من ملف JSON
+    window.onload = function() {
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                ['erp', 'rc', 'ngo', 'hr'].forEach((tab, index) => {
+                    buildTable(data[tab], document.querySelector(`#${tab} .pricing-table tbody`));
+                });
+            })
+            .catch(error => console.error('Error loading JSON file:', error));
+    };
+
+    function buildTable(items, tableBody) {
+        tableBody.innerHTML = '';
+        items.forEach(item => {
+            const tr = document.createElement('tr');
+
+            // العمود بالعربية
+            const tdArabic = document.createElement('td');
+            tdArabic.textContent = item.arabic;
+            tr.appendChild(tdArabic);
+
+            // الأعمدة الخاصة بالخطط
+            ['mini', 'pos', 'slas', 'pro'].forEach(plan => {
+                const td = document.createElement('td');
+                const checkmark = document.createElement('div');
+                checkmark.classList.add('checkmark');
+                if (item.plans[plan]) {
+                    checkmark.classList.add('active');
+                }
+                td.appendChild(checkmark);
+                tr.appendChild(td);
+            });
+
+            // العمود بالإنجليزية
+            const tdEnglish = document.createElement('td');
+            tdEnglish.textContent = item.english;
+            tr.appendChild(tdEnglish);
+
+            tableBody.appendChild(tr);
+        });
+    }
 </script>
 
 </body>
