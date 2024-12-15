@@ -1,0 +1,31 @@
+{
+    "items": [
+        {
+            "arabic": "إدارة الطلبات",
+            "english": "Order Management",
+            "plans": {
+                "pos": true,
+                "slas": true,
+                "pro": true
+            }
+        },
+        {
+            "arabic": "إدارة الطاولات",
+            "english": "Table Management",
+            "plans": {
+                "pos": true,
+                "slas": true,
+                "pro": true
+            }
+        },
+        {
+            "arabic": "إدارة العملاء",
+            "english": "Customer Management",
+            "plans": {
+                "pos": false,
+                "slas": true,
+                "pro": true
+            }
+        }
+    ]
+}
