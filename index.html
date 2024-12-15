@@ -3,70 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متابعة أهداف المبيعات</title>
-	<link rel="stylesheet" href="style.css">
+    <title>صفحة الهبوط</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
 
+        /* الهيدر */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header .contact {
+            font-size: 18px;
+        }
+
+        /* الجدول */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-table th, .pricing-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .pricing-table th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .pricing-table td .price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .pricing-table td .discount {
+            color: red;
+        }
+
+        .pricing-table td .checkmark {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-radius: 3px;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        .pricing-table td .checkmark.active {
+            background-color: #007BFF;
+            border-color: #007BFF;
+        }
+
+        .pricing-table td .checkmark.active::after {
+            content: '\2713';
+            color: white;
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* تحسينات للموبايل */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pricing-table {
+                font-size: 14px;
+            }
+
+            .pricing-table th, .pricing-table td {
+                padding: 8px;
+            }
+
+            .pricing-table th {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .pricing-table th, .pricing-table td {
+                font-size: 12px;
+                padding: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>متابعة أهداف المبيعات</h1>
-	<div id="month-info"></div>
-    <!-- سيتم تحديث النص بواسطة JavaScript -->
-</div>
 
-    <section id="weekly-goals">
-		<!-- الهدف الشهري -->
-		<section id="monthly-goal" class="week-block">
-			<h2>الهدف الشهري</h2>
-			<p>الهدف الشهري: <span id="monthly-target">0</span></p>
-			<p>المبيعات المحققة: <span id="monthly-achieved">0</span></p>
-			<p>نسبة التحقيق: <span id="monthly-percentage">0%</span></p>
-		</section>
+<!-- الهيدر -->
+<header>
+    <div class="logo">اسم الشركة</div>
+    <div class="contact">📞 123-456-789</div>
+</header>
 
-		<!-- الأسبوع الأول -->
-		<div class="week-block">
-			<h3>الأسبوع الأول (1 - 8)</h3>
-			<label>هدف الأسبوع الأول: <input type="number" id="week1-target"></label>
-			<label>المبيعات المحققة: <input type="number" id="week1-achieved"></label>
-			<p>نسبة التحقيق: <span id="week1-percentage">0%</span></p>
-			<p>الهدف اليومي المتبقي: <span id="week1-daily-goal">0</span></p>
-		</div>
+<!-- الجدول -->
+<table class="pricing-table">
+    <thead>
+        <tr>
+            <th>البند بالعربية</th>
+            <th>الباقة المصغرة MINI<br><span class="price">$20</span><br><span class="discount">خصم 5%</span></th>
+            <th>الباقة الأساسية POS<br><span class="price">$50</span><br><span class="discount">خصم 10%</span></th>
+            <th>الباقة المتقدمة SLAS<br><span class="price">$100</span><br><span class="discount">خصم 15%</span></th>
+            <th>الباقة الكاملة PRO<br><span class="price">$200</span><br><span class="discount">خصم 20%</span></th>
+            <th>البند بالإنجليزية</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- سيتم ملء البيانات هنا بواسطة جافا سكربت -->
+    </tbody>
+</table>
 
-		<!-- الأسبوع الثاني -->
-		<div class="week-block">
-			<h3>الأسبوع الثاني (9 - 16)</h3>
-			<p>المبلغ المرحل من الأسبوع الأول: <span id="week2-carried-over">0</span></p>
-			<label>هدف الأسبوع الثاني: <input type="number" id="week2-target"></label>
-			<label>المبيعات المحققة: <input type="number" id="week2-achieved"></label>
-			<p>نسبة التحقيق: <span id="week2-percentage">0%</span></p>
-			<p>الهدف اليومي المتبقي: <span id="week2-daily-goal">0</span></p>
-		</div>
+<script>
+  window.onload = function() {
+    fetch('data.json')  // تحميل ملف JSON
+      .then(response => response.json())
+      .then(data => {
+        const items = data.items;
+        buildTable(items);
+      })
+      .catch(error => console.error('Error loading JSON file:', error));
+  };
 
-		<!-- الأسبوع الثالث -->
-		<div class="week-block">
-			<h3>الأسبوع الثالث (17 - 24)</h3>
-			<p>المبلغ المرحل من الأسبوع الثاني: <span id="week3-carried-over">0</span></p>
-			<label>هدف الأسبوع الثالث: <input type="number" id="week3-target"></label>
-			<label>المبيعات المحققة: <input type="number" id="week3-achieved"></label>
-			<p>نسبة التحقيق: <span id="week3-percentage">0%</span></p>
-			<p>الهدف اليومي المتبقي: <span id="week3-daily-goal">0</span></p>
-		</div>
+  function buildTable(items) {
+    const table = document.querySelector('.pricing-table tbody');
+    table.innerHTML = ''; // مسح الجدول القديم
 
-		<!-- الأسبوع الرابع -->
-		<div class="week-block">
-			<h3>الأسبوع الرابع (25 - نهاية الشهر)</h3>
-			<p>المبلغ المرحل من الأسبوع الثالث: <span id="week4-carried-over">0</span></p>
-			<label>هدف الأسبوع الرابع: <input type="number" id="week4-target"></label>
-			<label>المبيعات المحققة: <input type="number" id="week4-achieved"></label>
-			<p>نسبة التحقيق: <span id="week4-percentage">0%</span></p>
-			<p>الهدف اليومي المتبقي: <span id="week4-daily-goal">0</span></p>
-		</div>
+    items.forEach(item => {
+      const tr = document.createElement('tr');
 
-    </section>
+      // إضافة العمود بالعربية
+      const tdArabic = document.createElement('td');
+      tdArabic.textContent = item.arabic;
+      tr.appendChild(tdArabic);
 
-    <!-- زر حذف البيانات -->
-    <button id="clearDataButton">تصفير كل البيانات</button>
+      // إضافة الأعمدة الخاصة بكل باقة
+      ['mini', 'pos', 'slas', 'pro'].forEach(plan => {
+        const td = document.createElement('td');
+        const checkmark = document.createElement('div');
+        checkmark.classList.add('checkmark');
+        if (item.plans[plan]) {
+          checkmark.classList.add('active');
+        }
+        td.appendChild(checkmark);
+        tr.appendChild(td);
+      });
 
-    <script src="script.js"></script>
-	
+      // إضافة العمود بالإنجليزية
+      const tdEnglish = document.createElement('td');
+      tdEnglish.textContent = item.english;
+      tr.appendChild(tdEnglish);
+
+      table.appendChild(tr);
+    });
+  }
+</script>
+
 </body>
 </html>
