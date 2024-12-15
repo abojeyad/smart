@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Life</title>
+    <title>جدول الميزات</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,62 +11,37 @@
             padding: 0;
             box-sizing: border-box;
             background-color: #f9f9f9;
+			direction: rtl;
         }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-        }
-
-        header .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        header .contact {
-            font-size: 18px;
-        }
-
+        /* التاب بار */
         .tabs {
             display: flex;
-            justify-content: center;
-            background-color: #f1f1f1;
-            border-bottom: 2px solid #ddd;
+            background-color: #007BFF;
+            padding: 10px 0;
+            justify-content: space-around;
         }
 
         .tab {
-            padding: 15px 20px;
+            color: white;
+            padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: bold;
-            color: #007BFF;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
+            border: none;
+            background-color: #007BFF;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
         .tab:hover {
-            background-color: #e6f0ff;
+            background-color: #0056b3;
         }
 
         .tab.active {
-            border-bottom: 2px solid #007BFF;
-            background-color: white;
+            background-color: #004494;
         }
 
-        .tab-content {
-            display: none;
-            padding: 20px;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .pricing-table {
+        table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
@@ -74,232 +49,190 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .pricing-table th, .pricing-table td {
+        th, td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: center;
         }
 
-        .pricing-table th {
+        th {
             background-color: #007BFF;
             color: white;
         }
 
-        .pricing-table td .price {
+        .section-header {
+            background-color: white;
+            color: black;
             font-size: 18px;
             font-weight: bold;
+            cursor: pointer;
         }
 
-        .pricing-table td .discount {
-            color: red;
+        .section-header:hover {
+            background-color: #B0E0E6;
         }
 
-        .pricing-table td .checkmark {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin: 0 auto;
-            background-color: #f1f1f1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .hidden {
+            display: none;
         }
 
-        .pricing-table td .checkmark.active {
-            background-color: #007BFF;
+        .toggle-btn {
+            font-size: 14px;
             color: white;
+            background-color: #28a745;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 5px;
         }
 
-        .pricing-table td .checkmark.active::before {
-            content: "✓"; /* علامة الصح */
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        /* تخصيص الجدول للجوال */
-        @media (max-width: 768px) {
-            .tabs {
-                flex-wrap: wrap;
-            }
-
-            .tab {
-                flex: 1 1 50%;
-                text-align: center;
-            }
-
-            /* إضافة سكرول أفقي في الجوال */
-            .tab-content {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .pricing-table {
-                width: 100%;
-                min-width: 600px; /* تحديد عرض أدنى للجدول */
-                table-layout: auto;
-            }
+        .toggle-btn:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">SMART LIFE</div>
-    <div class="contact">📞 0568954677</div>
-</header>
-
-<!-- التابات -->
+<!-- التابات في الأعلى -->
 <div class="tabs">
-    <div class="tab active" data-tab="erp">النظام المحاسبي ونقاط البيع: SMART ERP</div>
-    <div class="tab" data-tab="rc">نظام المطاعم والكافيهات: SMART R&C</div>
-    <div class="tab" data-tab="ngo">نظام الجمعيات الخيرية: SMART NGO</div>
-    <div class="tab" data-tab="hr">نظام الموارد البشرية: SMART HR</div>
+    <button class="tab active" onclick="changeTab('smart-erp')">النظام المحاسبي ونقاط البيع: SMART ERP</button>
+    <button class="tab" onclick="changeTab('smart-rc')">نظام المطاعم والكافيهات: SMART R&C</button>
+    <button class="tab" onclick="changeTab('smart-ngo')">نظام الجمعيات الخيرية: SMART NGO</button>
+    <button class="tab" onclick="changeTab('smart-hr')">نظام الموارد البشرية: SMART HR</button>
 </div>
 
-<!-- المحتوى الخاص بكل تاب -->
-<div id="erp" class="tab-content active">
-    <table class="pricing-table">
+    <table id="smart-erp" style="display: table;">
         <thead>
             <tr>
                 <th>البند بالعربية</th>
-                <th>الباقة المصغرة MINI<br><span class="discount">خصم 5%</span></th>
-                <th>الباقة الأساسية POS<br><span class="discount">خصم 10%</span></th>
-                <th>الباقة المتقدمة SLAS<br><span class="discount">خصم 15%</span></th>
-                <th>الباقة الكاملة PRO<br><span class="discount">خصم 20%</span></th>
+                <th class="package">الباقة المصغرة MINI</th>
+                <th class="package">الباقة الأساسية POS</th>
+                <th class="package">الباقة المتقدمة SLAS</th>
+                <th class="package">الباقة الكاملة PRO</th>
                 <th>البند بالإنجليزية</th>
             </tr>
         </thead>
         <tbody></tbody>
     </table>
-</div>
 
-<div id="rc" class="tab-content">
-    <table class="pricing-table">
+    <table id="smart-rc" style="display: none;">
         <thead>
             <tr>
                 <th>البند بالعربية</th>
-                <th>الباقة الأساسية POS<br><span class="discount">خصم 10%</span></th>
-                <th>الباقة المتقدمة SLAS<br><span class="discount">خصم 15%</span></th>
-                <th>الباقة الكاملة PRO<br><span class="discount">خصم 20%</span></th>
+                <th class="package">الباقة الأساسية POS</th>
+                <th class="package">الباقة المتقدمة SLAS</th>
+                <th class="package">الباقة الكاملة PRO</th>
                 <th>البند بالإنجليزية</th>
             </tr>
         </thead>
         <tbody></tbody>
     </table>
-</div>
 
-<div id="ngo" class="tab-content">
-    <table class="pricing-table">
+    <table id="smart-ngo" style="display: none;">
         <thead>
             <tr>
                 <th>البند بالعربية</th>
-                <th>الباقة الأساسية POS<br><span class="discount">خصم 10%</span></th>
-                <th>الباقة المتقدمة SLAS<br><span class="discount">خصم 15%</span></th>
-                <th>الباقة الكاملة PRO<br><span class="discount">خصم 20%</span></th>
+                <th class="package">الباقة الأساسية</th>
+                <th class="package">الباقة المتقدمة</th>
+                <th class="package">الباقة الشاملة</th>
                 <th>البند بالإنجليزية</th>
             </tr>
         </thead>
         <tbody></tbody>
     </table>
-</div>
 
-<div id="hr" class="tab-content">
-    <table class="pricing-table">
+    <table id="smart-hr" style="display: none;">
         <thead>
             <tr>
                 <th>البند بالعربية</th>
-                <th>الباقة المصغرة MINI<br><span class="discount">خصم 5%</span></th>
-                <th>الباقة الأساسية POS<br><span class="discount">خصم 10%</span></th>
-                <th>الباقة المتقدمة SLAS<br><span class="discount">خصم 15%</span></th>
-                <th>الباقة الكاملة PRO<br><span class="discount">خصم 20%</span></th>
+                <th class="package">الباقة المصغرة MINI</th>
+                <th class="package">الباقة الأساسية POS</th>
+                <th class="package">الباقة المتقدمة SLAS</th>
+                <th class="package">الباقة الكاملة PRO</th>
                 <th>البند بالإنجليزية</th>
             </tr>
         </thead>
         <tbody></tbody>
     </table>
-</div>
 
-<script>
-    // التنقل بين التابات
-    document.querySelectorAll('.tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    <script>
+async function loadProductFeatures(productId) {
+    // تحديد اسم الملف بناءً على المنتج
+    const fileName = `${productId}.json`;
 
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.tab).classList.add('active');
-        });
-    });
+    try {
+        // تحميل ملف JSON المناسب
+        const response = await fetch(fileName);
+        const data = await response.json();
 
-    // تحميل البيانات من ملفات JSON
-    window.onload = function() {
-        const files = {
-            'erp': 'smart_erp.json',
-            'rc': 'smart_rc.json',
-            'ngo': 'smart_ngo.json',
-            'hr': 'smart_hr.json'
-        };
+        // تحديد الجدول المطلوب
+        const table = document.getElementById(productId);
+        const tbody = table.querySelector("tbody");
 
-        const headers = {
-            'erp': ['البند بالعربية', 'الباقة المصغرة MINI', 'الباقة الأساسية POS', 'الباقة المتقدمة SLAS', 'الباقة الكاملة PRO', 'البند بالإنجليزية'],
-            'rc': ['البند بالعربية', 'الباقة الأساسية POS', 'الباقة المتقدمة SLAS', 'الباقة الكاملة PRO', 'البند بالإنجليزية'],
-            'ngo': ['البند بالعربية', 'الباقة الأساسية POS', 'الباقة المتقدمة SLAS', 'الباقة الكاملة PRO', 'البند بالإنجليزية'],
-            'hr': ['البند بالعربية', 'الباقة المصغرة MINI', 'الباقة الأساسية POS', 'الباقة المتقدمة SLAS', 'الباقة الكاملة PRO', 'البند بالإنجليزية']
-        };
+        // تنظيف الجدول
+        tbody.innerHTML = "";
 
-        Object.keys(files).forEach(tab => {
-            fetch(files[tab])
-                .then(response => response.json())
-                .then(data => {
-                    buildTable(data.items, document.querySelector(`#${tab} .pricing-table tbody`), headers[tab]);
-                })
-                .catch(error => {
-                    console.error(`Error loading ${files[tab]}:`, error);
-                    const tbody = document.querySelector(`#${tab} .pricing-table tbody`);
-                    tbody.innerHTML = `<tr><td colspan="6">خطأ في تحميل البيانات. يرجى المحاولة لاحقًا.</td></tr>`;
-                });
-        });
-    };
+        // إنشاء الجدول ديناميكيًا
+        for (const [section, features] of Object.entries(data.sections)) {
+            // تحويل أي شرطتين أو underscores إلى فراغات
+            const formattedSectionName = section.replace(/[-_]/g, " ");
+            
+            // إضافة عنوان القسم
+            const sectionRow = document.createElement("tr");
+            sectionRow.className = "section-header";
+            sectionRow.innerHTML = 
+                `<td colspan="${data.packages.length + 2}">
+                    ${formattedSectionName}
+                    <button class="toggle-btn" onclick="toggleSection('${section}')">عرض الميزات</button>
+                </td>`;
+            tbody.appendChild(sectionRow);
 
-    function buildTable(items, tableBody, headers) {
-        tableBody.innerHTML = '';
-        
-        // تحديث العناوين
-        const headerRow = tableBody.closest('table').querySelector('thead tr');
-        headerRow.innerHTML = ''; // إزالة العناوين الحالية
-        headers.forEach(header => {
-            const th = document.createElement('th');
-            th.innerHTML = header;
-            headerRow.appendChild(th);
-        });
+            // إضافة الميزات
+            features.forEach(feature => {
+                const row = document.createElement("tr");
+                row.className = `${section} hidden`;
 
-        // إضافة الصفوف
-        items.forEach(item => {
-            const tr = document.createElement('tr');
-            const tdArabic = document.createElement('td');
-            tdArabic.textContent = item.arabic;
-            tr.appendChild(tdArabic);
+                const availabilityCells = feature.availability
+                    .map(avail => `<td>${avail}</td>`)
+                    .join("");
 
-            // إضافة الخانات الديناميكية بناءً على البيانات
-            Object.keys(item.plans).forEach(plan => {
-                const td = document.createElement('td');
-                const checkmark = document.createElement('div');
-                checkmark.classList.add('checkmark');
-                if (item.plans[plan]) {
-                    checkmark.classList.add('active');
-                }
-                td.appendChild(checkmark);
-                tr.appendChild(td);
+                row.innerHTML = 
+                    `<td>${feature.name_ar}</td>
+                    ${availabilityCells}
+                    <td>${feature.name_en}</td>`;
+                tbody.appendChild(row);
             });
-
-            const tdEnglish = document.createElement('td');
-            tdEnglish.textContent = item.english;
-            tr.appendChild(tdEnglish);
-
-            tableBody.appendChild(tr);
-        });
+        }
+    } catch (error) {
+        console.error("خطأ في تحميل ملف JSON:", error);
     }
-</script>
+}
+
+        function toggleSection(section) {
+            const rows = document.querySelectorAll(`.${section}`);
+            rows.forEach(row => row.classList.toggle("hidden"));
+
+            const button = document.querySelector(`.section-header[onclick="toggleSection('${section}')"] .toggle-btn`);
+            button.textContent = rows[0].classList.contains("hidden") ? "عرض الميزات" : "إخفاء الميزات";
+        }
+
+        function changeTab(tabId) {
+            // إخفاء جميع التابات
+            document.querySelectorAll(".tabs .tab").forEach(tab => tab.classList.remove("active"));
+            document.querySelectorAll("table").forEach(table => (table.style.display = "none"));
+
+            // تفعيل التاب المحدد
+            document.querySelector(`.tab[onclick="changeTab('${tabId}')"]`).classList.add("active");
+            document.getElementById(tabId).style.display = "table";
+
+            // تحميل البيانات الخاصة بالتاب
+            loadProductFeatures(tabId);
+        }
+
+        // تحميل البيانات الافتراضية لأول تاب عند فتح الصفحة
+        loadProductFeatures('smart-erp');
+    </script>
 
 </body>
 </html>
