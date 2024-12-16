@@ -2,39 +2,32 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>جدول الميزات</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            background-color: #f9f9f9;
-			direction: rtl;
+            direction: rtl;
         }
 
-        /* التاب بار */
         .tabs {
             display: flex;
             background-color: #007BFF;
-            padding: 10px 0;
-            justify-content: space-around;
+            padding: 10px;
+            justify-content: space-evenly;
+            flex-wrap: wrap; /* للسماح للأزرار بالتنقل على الجوال */
         }
 
         .tab {
             color: white;
-            padding: 10px 20px;
+            padding: 10px 15px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             border: none;
             background-color: #007BFF;
-            border-radius: 5px;
             transition: background-color 0.3s;
-        }
-
-        .tab:hover {
-            background-color: #0056b3;
         }
 
         .tab.active {
@@ -45,14 +38,15 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* السماح بالتمرير الأفقي للجداول */
+            display: block; /* جعل الجدول يمكن التمرير أفقيًا */
         }
 
         th, td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 8px;
             text-align: center;
+            font-size: 14px; /* تصغير الخط في الجداول */
         }
 
         th {
@@ -61,40 +55,44 @@
         }
 
         .section-header {
-            background-color: white;
-            color: black;
-            font-size: 18px;
-            font-weight: bold;
             cursor: pointer;
+            font-weight: bold;
         }
 
-        .section-header:hover {
-            background-color: #B0E0E6;
+        .toggle-icon {
+            float: left;
+            margin-left: 10px;
+            font-weight: bold;
         }
 
         .hidden {
             display: none;
         }
 
-        .toggle-btn {
-            font-size: 14px;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            padding: 5px 10px;
-            margin-left: 10px;
-            cursor: pointer;
-            border-radius: 5px;
+        .highlight {
+            background-color: #eaffea; /* لون أخضر خفيف */
         }
 
-        .toggle-btn:hover {
-            background-color: #218838;
+        /* تحسين الشكل على الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column; /* تحويل الأزرار إلى عمود */
+            }
+
+            .tab {
+                font-size: 16px;
+                width: 100%; /* جعل الأزرار تمتد على العرض الكامل */
+            }
+
+            th, td {
+                font-size: 10px; /* تقليل حجم الخط للجداول */
+                padding: 6px; /* تقليص المسافات */
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- التابات في الأعلى -->
 <div class="tabs">
     <button class="tab active" onclick="changeTab('smart-erp')">النظام المحاسبي ونقاط البيع: SMART ERP</button>
     <button class="tab" onclick="changeTab('smart-rc')">نظام المطاعم والكافيهات: SMART R&C</button>
@@ -102,93 +100,56 @@
     <button class="tab" onclick="changeTab('smart-hr')">نظام الموارد البشرية: SMART HR</button>
 </div>
 
-    <table id="smart-erp" style="display: table;">
-        <thead>
-            <tr>
-                <th>البند بالعربية</th>
-                <th class="package">الباقة المصغرة MINI</th>
-                <th class="package">الباقة الأساسية POS</th>
-                <th class="package">الباقة المتقدمة SLAS</th>
-                <th class="package">الباقة الكاملة PRO</th>
-                <th>البند بالإنجليزية</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+<table id="smart-erp" style="display: table;">
+    <tbody></tbody>
+</table>
 
-    <table id="smart-rc" style="display: none;">
-        <thead>
-            <tr>
-                <th>البند بالعربية</th>
-                <th class="package">الباقة الأساسية POS</th>
-                <th class="package">الباقة المتقدمة SLAS</th>
-                <th class="package">الباقة الكاملة PRO</th>
-                <th>البند بالإنجليزية</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+<table id="smart-rc" style="display: none;">
+    <tbody></tbody>
+</table>
 
-    <table id="smart-ngo" style="display: none;">
-        <thead>
-            <tr>
-                <th>البند بالعربية</th>
-                <th class="package">الباقة الأساسية</th>
-                <th class="package">الباقة المتقدمة</th>
-                <th class="package">الباقة الشاملة</th>
-                <th>البند بالإنجليزية</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+<table id="smart-ngo" style="display: none;">
+    <tbody></tbody>
+</table>
 
-    <table id="smart-hr" style="display: none;">
-        <thead>
-            <tr>
-                <th>البند بالعربية</th>
-                <th class="package">الباقة المصغرة MINI</th>
-                <th class="package">الباقة الأساسية POS</th>
-                <th class="package">الباقة المتقدمة SLAS</th>
-                <th class="package">الباقة الكاملة PRO</th>
-                <th>البند بالإنجليزية</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+<table id="smart-hr" style="display: none;">
+    <tbody></tbody>
+</table>
 
-    <script>
+<script>
 async function loadProductFeatures(productId) {
-    // تحديد اسم الملف بناءً على المنتج
     const fileName = `${productId}.json`;
 
     try {
-        // تحميل ملف JSON المناسب
         const response = await fetch(fileName);
         const data = await response.json();
 
-        // تحديد الجدول المطلوب
         const table = document.getElementById(productId);
         const tbody = table.querySelector("tbody");
 
-        // تنظيف الجدول
         tbody.innerHTML = "";
 
-        // إنشاء الجدول ديناميكيًا
         for (const [section, features] of Object.entries(data.sections)) {
-            // تحويل أي شرطتين أو underscores إلى فراغات
             const formattedSectionName = section.replace(/[-_]/g, " ");
-            
-            // إضافة عنوان القسم
+
             const sectionRow = document.createElement("tr");
             sectionRow.className = "section-header";
+            sectionRow.setAttribute("onclick", `toggleSection('${section}')`);
             sectionRow.innerHTML = 
                 `<td colspan="${data.packages.length + 2}">
+                    <span class="toggle-icon" id="toggle-icon-${section}">+</span>
                     ${formattedSectionName}
-                    <button class="toggle-btn" onclick="toggleSection('${section}')">عرض الميزات</button>
                 </td>`;
             tbody.appendChild(sectionRow);
 
-            // إضافة الميزات
+            const headersRow = document.createElement("tr");
+            headersRow.className = `${section} hidden`;
+            headersRow.innerHTML = `
+                <th>البند بالعربية</th>
+                ${data.packages.map(pkg => `<th class="package">${pkg}</th>`).join("")}
+                <th>البند بالإنجليزية</th>`;
+            tbody.appendChild(headersRow);
+
             features.forEach(feature => {
                 const row = document.createElement("tr");
                 row.className = `${section} hidden`;
@@ -209,30 +170,37 @@ async function loadProductFeatures(productId) {
     }
 }
 
-        function toggleSection(section) {
-            const rows = document.querySelectorAll(`.${section}`);
-            rows.forEach(row => row.classList.toggle("hidden"));
-
-            const button = document.querySelector(`.section-header[onclick="toggleSection('${section}')"] .toggle-btn`);
-            button.textContent = rows[0].classList.contains("hidden") ? "عرض الميزات" : "إخفاء الميزات";
+function toggleSection(section) {
+    const rows = document.querySelectorAll(`.${section}`);
+    rows.forEach(row => {
+        row.classList.toggle("hidden");
+        if (!row.classList.contains("hidden")) {
+            row.classList.add("highlight");
+        } else {
+            row.classList.remove("highlight");
         }
+    });
 
-        function changeTab(tabId) {
-            // إخفاء جميع التابات
-            document.querySelectorAll(".tabs .tab").forEach(tab => tab.classList.remove("active"));
-            document.querySelectorAll("table").forEach(table => (table.style.display = "none"));
+    const toggleIcon = document.getElementById(`toggle-icon-${section}`);
+    if (rows[0].classList.contains("hidden")) {
+        toggleIcon.textContent = "+"; // تغيير العلامة إلى + عند الإغلاق
+    } else {
+        toggleIcon.textContent = "-"; // تغيير العلامة إلى - عند الفتح
+    }
+}
 
-            // تفعيل التاب المحدد
-            document.querySelector(`.tab[onclick="changeTab('${tabId}')"]`).classList.add("active");
-            document.getElementById(tabId).style.display = "table";
+function changeTab(tabId) {
+    document.querySelectorAll(".tabs .tab").forEach(tab => tab.classList.remove("active"));
+    document.querySelectorAll("table").forEach(table => (table.style.display = "none"));
 
-            // تحميل البيانات الخاصة بالتاب
-            loadProductFeatures(tabId);
-        }
+    document.querySelector(`.tab[onclick="changeTab('${tabId}')"]`).classList.add("active");
+    document.getElementById(tabId).style.display = "table";
 
-        // تحميل البيانات الافتراضية لأول تاب عند فتح الصفحة
-        loadProductFeatures('smart-erp');
-    </script>
+    loadProductFeatures(tabId);
+}
+
+loadProductFeatures('smart-erp');
+</script>
 
 </body>
 </html>

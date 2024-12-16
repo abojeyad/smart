@@ -1,0 +1,138 @@
+{
+  "packages": ["POS", "SLAS", "PRO"],
+  "sections": {
+    "الميزات-العامة": [
+      {"name_ar": "تخزين سحابي لا محدود", "availability": ["✔", "✔", "✔"], "name_en": "Unlimited Cloud Storage"},
+      {"name_ar": "دعم فني 24/7", "availability": ["✔", "✔", "✔"], "name_en": "Technical Support 24/7"},
+      {"name_ar": "نسخة ديسكتوب (أونلاين / أوفلاين)", "availability": ["✔", "✔", "✔"], "name_en": "Offline Sales Interface"},
+      {"name_ar": "تطبيق للمبيعات Android", "availability": ["✔", "✔", "✔"], "name_en": "Sales Application for Android"},
+      {"name_ar": "تطبيق للمبيعات Mac & IOS", "availability": ["✔", "✔", "✔"], "name_en": "Sales Application for iOS"},
+      {"name_ar": "تطبيق المالك (Smart Dashboard)", "availability": ["✔", "✔", "✔"], "name_en": "Owner Application (Smart Dashboard)"},
+      {"name_ar": "نظام الموارد البشرية HR", "availability": ["✔", "✔", "✔"], "name_en": "Human Resources (HR)"},
+      {"name_ar": "نظام إدارة المشاريع والمهام", "availability": ["✔", "✔", "✔"], "name_en": "Projects & tasks System"},
+      {"name_ar": "النظام المالي", "availability": ["✔", "✔", "✔"], "name_en": "Financial System"},
+      {"name_ar": "ربط جميع فروع نقاط البيع", "availability": ["✔", "✔", "✔"], "name_en": "All Branches in One Interface"},
+      {"name_ar": "تحديثات مجانية ومستمرة", "availability": ["✔", "✔", "✔"], "name_en": "Free & ongoing update"}
+    ],
+    "النظام-المحاسبي": [
+      {"name_ar": "شجرة الحسابات", "availability": ["✔", "✔", "✔"], "name_en": "Accounting Type"},
+      {"name_ar": "الحسابات", "availability": ["✔", "✔", "✔"], "name_en": "Accounts"},
+      {"name_ar": "القيود اليومية", "availability": ["✔", "✔", "✔"], "name_en": "Journal Entry"},
+      {"name_ar": "سندات الصرف", "availability": ["✔", "✔", "✔"], "name_en": "Payment Voucher"},
+      {"name_ar": "سندات القبض", "availability": ["✔", "✔", "✔"], "name_en": "Receipt Voucher"},
+      {"name_ar": "سندات التحويل", "availability": ["✔", "✔", "✔"], "name_en": "Transfer Bonds"},
+      {"name_ar": "أرصدة الأصناف", "availability": ["✔", "✔", "✔"], "name_en": "Products Balances"},
+      {"name_ar": "ميزان المراجعة", "availability": ["✔", "✔", "✔"], "name_en": "Trial Balance"},
+      {"name_ar": "قائمة الدخل", "availability": ["✔", "✔", "✔"], "name_en": "Income Statement"},
+      {"name_ar": "المركز المالي", "availability": ["✔", "✔", "✔"], "name_en": "Financial Center"},
+      {"name_ar": "إهلاكات الأصول", "availability": ["✔", "✔", "✔"], "name_en": "Depreciation Of Assets"},
+      {"name_ar": "مراكز التكلفة", "availability": ["✔", "✔", "✔"], "name_en": "Costs Centers"},
+      {"name_ar": "طرق الدفع", "availability": ["✔", "✔", "✔"], "name_en": "Payments Methods"},
+      {"name_ar": "العملات", "availability": ["✔", "✔", "✔"], "name_en": "Currencies"},
+      {"name_ar": "أسعار صرف العملات", "availability": ["✔", "✔", "✔"], "name_en": "Currencies Exchange Rates"}
+    ],
+    "نظام-المطاعم": [
+      {"name_ar": "الربط مع تطبيق مطعمي", "availability": ["✔", "✔", "✔"], "name_en": "Linking with the application of my restaurant"},
+      {"name_ar": "نظام الطاولات والجلسات", "availability": ["عدد لا محدود", "عدد لا محدود", "عدد لا محدود"], "name_en": "Tables and seats system"},
+      {"name_ar": "إضافة السائقين", "availability": ["عدد لا محدود", "عدد لا محدود", "عدد لا محدود"], "name_en": "Orders captains"},
+      {"name_ar": "الربط مع أجهزة الطلب والدفع الذاتي", "availability": ["✔", "✔", "✔"], "name_en": "Linking with self-ordering and payment machines"},
+      {"name_ar": "دعم كافة أنواع الطلبات (سفري، محلي، توصيل، حجوزات)", "availability": ["✔", "✔", "✔"], "name_en": "Support for all types of orders"},
+      {"name_ar": "المنتجات التجميعية والتصنيعية", "availability": ["✔", "✔", "✔"], "name_en": "Assembly products"},
+      {"name_ar": "احتساب الرسبي", "availability": ["✔", "✔", "✔"], "name_en": "Calculation of product costs"},
+      {"name_ar": "شاشة العميل", "availability": ["✔", "✔", "✔"], "name_en": "Clients screen"},
+      {"name_ar": "نظام مقدمي الطلب (النوادل)", "availability": ["✔", "✔", "✔"], "name_en": "Waiters system"},
+      {"name_ar": "المنيو الذكي", "availability": ["✔", "✔", "✔"], "name_en": "Smart Menu"}
+    ],
+    "نظام-المخزون": [
+      {"name_ar": "المنتجات المعيارية والخدمية", "availability": ["✔", "✔", "✔"], "name_en": "Standard & Service Products"},
+      {"name_ar": "طباعة ملصقات الباركود", "availability": ["✔", "✔", "✔"], "name_en": "Print Barcode/Label"},
+      {"name_ar": "التحويلات المخزنية", "availability": ["✔", "✔", "✔"], "name_en": "Inventory Transfers"},
+      {"name_ar": "جرد المخزون", "availability": ["✔", "✔", "✔"], "name_en": "Stock Counts"},
+      {"name_ar": "نظام الجرد الدوري", "availability": ["✔", "✔", "✔"], "name_en": "Periodic Inventory System"},
+      {"name_ar": "نظام الجرد المستمر", "availability": ["✔", "✔", "✔"], "name_en": "Perpetual Inventory System"},
+      {"name_ar": "تسوية المخزون", "availability": ["✔", "✔", "✔"], "name_en": "Stock Adjustment"},
+      {"name_ar": "أوامر الصرف المخزنية", "availability": ["✔", "✔", "✔"], "name_en": "Inventory Exchange Orders"},
+      {"name_ar": "استيراد المنتجات", "availability": ["✔", "✔", "✔"], "name_en": "Products Importing"},
+      {"name_ar": "الوحدات المتعددة للصنف", "availability": ["✔", "✔", "✔"], "name_en": "Multiple Units of an Item"},
+      {"name_ar": "أقسام الأصناف", "availability": ["✔", "✔", "✔"], "name_en": "Product Category"},
+      {"name_ar": "متغيرات الأصناف", "availability": ["✔", "✔", "✔"], "name_en": "Product Variants"},
+      {"name_ar": "العلامات التجارية", "availability": ["✔", "✔", "✔"], "name_en": "Brand"},
+      {"name_ar": "تقرير عن الأصناف", "availability": ["✔", "✔", "✔"], "name_en": "Report of Products"},
+      {"name_ar": "تنبيهات بكميات الأصناف القليلة", "availability": ["✔", "✔", "✔"], "name_en": "The Low Quantity Warning"},
+      {"name_ar": "تنبيهات بإنتهاء صلاحية الأصناف", "availability": ["✔", "✔", "✔"], "name_en": "Expiry Date Warning"},
+      {"name_ar": "تقرير تسوية المخزون", "availability": ["✔", "✔", "✔"], "name_en": "Inventory Adjustment Report"},
+      {"name_ar": "تقرير عن أقسام الأصناف", "availability": ["✔", "✔", "✔"], "name_en": "Product Category Report"},
+      {"name_ar": "تقرير عن العلامات التجارية", "availability": ["✔", "✔", "✔"], "name_en": "Brand Report"}
+    ],
+    "نظام-المبيعات": [
+      {"name_ar": "إنشاء مبيعات من النظام الرئيسي", "availability": ["✔", "✔", "✔"], "name_en": "Create Sales from the Main System"},
+      {"name_ar": "إنشاء حقول مخصصة للمبيعات", "availability": ["✔", "✔", "✔"], "name_en": "Create Custom Sales Fields"},
+      {"name_ar": "الفواتير الدورية", "availability": ["✔", "✔", "✔"], "name_en": "Periodic Billing"},
+      {"name_ar": "تقرير مبيعات الفروع والمستخدمين", "availability": ["✔", "✔", "✔"], "name_en": "Branches and Users Sales Report"},
+      {"name_ar": "تقرير مبيعات المنتجات", "availability": ["✔", "✔", "✔"], "name_en": "Product Sales Report"},
+      {"name_ar": "عروض الأسعار", "availability": ["✔", "✔", "✔"], "name_en": "Quotations"},
+      {"name_ar": "المرتجعات بدون فاتورة", "availability": ["✔", "✔", "✔"], "name_en": "Returns without Invoice"},
+      {"name_ar": "العروض والتخفيضات", "availability": ["✔", "✔", "✔"], "name_en": "Offers and Discounts"},
+      {"name_ar": "كوبونات الخصم", "availability": ["✔", "✔", "✔"], "name_en": "Discount Coupons"},
+      {"name_ar": "مندوبين المبيعات", "availability": ["✔", "✔", "✔"], "name_en": "Sales Representatives"},
+      {"name_ar": "تقرير المبيعات اليومية والشهرية والسنوية", "availability": ["✔", "✔", "✔"], "name_en": "Daily, Monthly and Yearly Sales Report"},
+      {"name_ar": "استيراد المبيعات من ملف خارجي", "availability": ["✔", "✔", "✔"], "name_en": "Import Sales from an External File"},
+      {"name_ar": "رسم بياني للأفضل مبيعات", "availability": ["✔", "✔", "✔"], "name_en": "Best Selling Chart"},
+      {"name_ar": "أوامر التسليم", "availability": ["✔", "✔", "✔"], "name_en": "Delivery Orders"},
+      {"name_ar": "بطاقات الهدية", "availability": ["✔", "✔", "✔"], "name_en": "Gift Cards"}
+    ],
+    "نظام-المشتريات-والمصروفات": [
+      {"name_ar": "المشتريات المباشرة", "availability": ["✔", "✔", "✔"], "name_en": "Direct Purchases"},
+      {"name_ar": "طلبات المشتريات الداخلية", "availability": ["✔", "✔", "✔"], "name_en": "Internal Purchase Orders"},
+      {"name_ar": "طلبات المشتريات الخارجية", "availability": ["✔", "✔", "✔"], "name_en": "External Purchase Orders"},
+      {"name_ar": "مرتجعات المشتريات", "availability": ["✔", "✔", "✔"], "name_en": "Purchase Returns"},
+      {"name_ar": "تقرير المشتريات", "availability": ["✔", "✔", "✔"], "name_en": "Purchase Report"},
+      {"name_ar": "تقرير مشتريات الأصناف", "availability": ["✔", "✔", "✔"], "name_en": "Item Purchases Report"},
+      {"name_ar": "تقرير مصروفات المشتريات", "availability": ["✔", "✔", "✔"], "name_en": "Purchasing Expense Report"},
+      {"name_ar": "انشاء فئات للمصروفات", "availability": ["✔", "✔", "✔"], "name_en": "Create Expense Categories"},
+      {"name_ar": "استيراد المشتريات من ملف خارجي", "availability": ["✔", "✔", "✔"], "name_en": "Import Purchases from an External File"},
+      {"name_ar": "انشاء حقول مخصصة للمشتريات", "availability": ["✔", "✔", "✔"], "name_en": "Create Custom Fields for Purchases"}
+    ],
+    "العملاء-والموردين": [
+      {"name_ar": "إضافة جميع بيانات العملاء أو الموردين", "availability": ["✔", "✔", "✔"], "name_en": "Add all Customer or Supplier Data"},
+      {"name_ar": "تخصيص العملاء على الفروع", "availability": ["✔", "✔", "✔"], "name_en": "Allocation of Clients to Branches"},
+      {"name_ar": "انشاء حقول مخصصة للعملاء أو الموردين", "availability": ["✔", "✔", "✔"], "name_en": "Create Clients Fields for Customers or Suppliers"},
+      {"name_ar": "رفع مرفقات الصور والملفات للعملاء", "availability": ["✔", "✔", "✔"], "name_en": "Upload Image and File Attachments to Clients"},
+      {"name_ar": "إنشاء مجموعات للعملاء", "availability": ["✔", "✔", "✔"], "name_en": "Create Customer Groups"},
+      {"name_ar": "تقرير العملاء والموردين", "availability": ["✔", "✔", "✔"], "name_en": "Customer and Supplier Report"},
+      {"name_ar": "أرصد العملاء والموردين", "availability": ["✔", "✔", "✔"], "name_en": "Customers and Suppliers Balances"},
+      {"name_ar": "تقرير أعمار ديون العملاء والموردين", "availability": ["✔", "✔", "✔"], "name_en": "Debt Aging Report for Customers & Suppliers"}
+    ],
+    "تقارير-مالية-وإحصائية": [
+      {"name_ar": "الإقرار الضريبي", "availability": ["✔", "✔", "✔"], "name_en": "Tax Declaration"},
+      {"name_ar": "تقرير السجلات", "availability": ["✔", "✔", "✔"], "name_en": "Records Report"},
+      {"name_ar": "تقرير عن المدفوعات", "availability": ["✔", "✔", "✔"], "name_en": "Payment Report"},
+      {"name_ar": "تقرير السيولة النقدية", "availability": ["✔", "✔", "✔"], "name_en": "Cash Flow Report"},
+      {"name_ar": "تقارير مراكز التكلفة", "availability": ["✔", "✔", "✔"], "name_en": "Cost Center Reports"},
+      {"name_ar": "تقارير اختيارية", "availability": ["✔", "✔", "✔"], "name_en": "Optional Reports"},
+      {"name_ar": "تقارير المصروفات تفصيلي", "availability": ["✔", "✔", "✔"], "name_en": "Detailed Expense Reports"}
+    ],
+    "الأقساط": [
+      {"name_ar": "جدولة الأقساط", "availability": ["✔", "✔", "✔"], "name_en": "Installment Scheduling"},
+      {"name_ar": "أقساط القبض", "availability": ["✔", "✔", "✔"], "name_en": "Installment Payments"},
+      {"name_ar": "أقساط الدفع", "availability": ["✔", "✔", "✔"], "name_en": "Instalment Refund"},
+      {"name_ar": "الأقساط المستحقة", "availability": ["✔", "✔", "✔"], "name_en": "Due Installment"}
+    ],
+    "المستخدمين-والكاشير": [
+      {"name_ar": "تخصيص صلاحيات المستخدمين", "availability": ["✔", "✔", "✔"], "name_en": "Assign User Permissions"},
+      {"name_ar": "عدد المستخدمين", "availability": ["3 مستخدمين مجانا", "5 مستخدمين مجانا", "5 مستخدمين مجانا"], "name_en": "Users Number"},
+      {"name_ar": "عدد موظفي الموارد البشرية", "availability": ["✔", "✔", "50 موظف مجانا"], "name_en": "The Number of Employees"},
+      {"name_ar": "عدد الكاشيرات", "availability": ["لا محدود", "لا محدود", "لا محدود"], "name_en": "The Number of Cashiers"},
+      {"name_ar": "عدد مندوبين المبيعات", "availability": ["✔", "لا محدود", "لا محدود"], "name_en": "The Number of Sales Representatives"}
+    ],
+    "مميزات-أخرى": [
+      {"name_ar": "انشاء قوالب الفواتير وعروض الأسعار", "availability": ["✔", "✔", "✔"], "name_en": "Create Invoice Templates and Quotes"},
+      {"name_ar": "انشاء قوالب السندات", "availability": ["✔", "✔", "✔"], "name_en": "Create Voucher Templates"},
+      {"name_ar": "إعدادات رسائل SMS", "availability": ["✔", "✔", "✔"], "name_en": "SMS Setting"},
+      {"name_ar": "إعدادات المتجر الإلكتروني", "availability": ["✔", "✔", "✔"], "name_en": "Online Store Settings"},
+      {"name_ar": "قوالب البريد الإلكتروني", "availability": ["✔", "✔", "✔"], "name_en": "Email Templates"},
+      {"name_ar": "الإشعارات", "availability": ["✔", "✔", "✔"], "name_en": "Notification"},
+      {"name_ar": "API Documentation", "availability": ["✔", "✔", "✔"], "name_en": "API Documentation"}
+    ]
+  }
+}
