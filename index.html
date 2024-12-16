@@ -17,7 +17,7 @@
             background-color: #007BFF;
             padding: 10px;
             justify-content: space-evenly;
-            flex-wrap: wrap; /* للسماح للأزرار بالتنقل على الجوال */
+            flex-wrap: wrap;
         }
 
         .tab {
@@ -38,15 +38,15 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            overflow-x: auto; /* السماح بالتمرير الأفقي للجداول */
-            display: block; /* جعل الجدول يمكن التمرير أفقيًا */
+            overflow-x: auto;
+            display: block;
         }
 
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
-            font-size: 14px; /* تصغير الخط في الجداول */
+            font-size: 14px;
         }
 
         th {
@@ -70,23 +70,53 @@
         }
 
         .highlight {
-            background-color: #eaffea; /* لون أخضر خفيف */
+            background-color: #eaffea;
+        }
+
+        /* زر عائم للواتساب */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .floating-btn:hover {
+            background-color: #1bc159;
         }
 
         /* تحسين الشكل على الشاشات الصغيرة */
         @media (max-width: 768px) {
             .tabs {
-                flex-direction: column; /* تحويل الأزرار إلى عمود */
+                flex-direction: column;
             }
 
             .tab {
                 font-size: 16px;
-                width: 100%; /* جعل الأزرار تمتد على العرض الكامل */
+                width: 100%;
             }
 
             th, td {
-                font-size: 10px; /* تقليل حجم الخط للجداول */
-                padding: 6px; /* تقليص المسافات */
+                font-size: 10px;
+                padding: 6px;
+            }
+
+            .floating-btn {
+                bottom: 15px;
+                left: 15px;
+                padding: 12px 16px;
+                font-size: 14px;
             }
         }
     </style>
@@ -115,6 +145,11 @@
 <table id="smart-hr" style="display: none;">
     <tbody></tbody>
 </table>
+
+<!-- زر الواتساب العائم -->
+<a href="https://wa.me/966568954677?text=أرغب_في_الحصول_على_نسخة_تجريبية" target="_blank">
+    <button class="floating-btn">احصل على نسخة تجريبية</button>
+</a>
 
 <script>
 async function loadProductFeatures(productId) {
