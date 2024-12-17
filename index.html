@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,11 +11,14 @@
             margin: 0;
             padding: 0;
             direction: rtl;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
 
         .tabs {
             display: flex;
-            background-color: #007BFF;
+            background-color: #34495e;
             padding: 10px;
             justify-content: space-evenly;
             flex-wrap: wrap;
@@ -26,12 +30,19 @@
             cursor: pointer;
             font-size: 14px;
             border: none;
-            background-color: #007BFF;
-            transition: background-color 0.3s;
+            background-color: #2c3e50;
+            transition: background-color 0.3s, border-color 0.3s;
+            border-radius: 5px;
+        }
+
+        .tab:hover {
+            background-color: #16a085;
+            border-color: #1abc9c;
         }
 
         .tab.active {
-            background-color: #004494;
+            background-color: #1abc9c;
+            border-color: #16a085;
         }
 
         table {
@@ -73,30 +84,6 @@
             background-color: #eaffea;
         }
 
-        /* زر عائم للواتساب */
-        .floating-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background-color: #25D366;
-            color: white;
-            border: none;
-            padding: 15px 20px;
-            border-radius: 50px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1000;
-            text-align: center;
-            transition: background-color 0.3s;
-        }
-
-        .floating-btn:hover {
-            background-color: #1bc159;
-        }
-
-        /* تحسين الشكل على الشاشات الصغيرة */
         @media (max-width: 768px) {
             .tabs {
                 flex-direction: column;
@@ -107,137 +94,193 @@
                 width: 100%;
             }
 
-            th, td {
+            th,
+            td {
                 font-size: 10px;
                 padding: 6px;
             }
-
-            .floating-btn {
-                bottom: 15px;
-                left: 15px;
-                padding: 12px 16px;
-                font-size: 16px;
-            }
         }
+
+        footer {
+            background-color: #34495e;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #16a085;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #1abc9c;
+        }
+
+        .footer-text {
+            font-size: 16px;
+        }
+
+        .footer-left,
+        .footer-right {
+            align-items: center;
+        }
+
+        .btn-green {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-green:hover {
+            background-color: #218838;
+        }
+
     </style>
 </head>
+
 <body>
 
-<div class="tabs">
-    <button class="tab active" onclick="changeTab('smart-erp')">النظام المحاسبي ونقاط البيع: SMART ERP</button>
-    <button class="tab" onclick="changeTab('smart-rc')">نظام المطاعم والكافيهات: SMART R&C</button>
-    <button class="tab" onclick="changeTab('smart-ngo')">نظام الجمعيات الخيرية: SMART NGO</button>
-    <button class="tab" onclick="changeTab('smart-hr')">نظام الموارد البشرية: SMART HR</button>
-</div>
+    <div class="tabs">
+        <button class="tab active" onclick="changeTab('smart-erp')">النظام المحاسبي ونقاط البيع: SMART ERP</button>
+        <button class="tab" onclick="changeTab('smart-rc')">نظام المطاعم والكافيهات: SMART R&C</button>
+        <button class="tab" onclick="changeTab('smart-ngo')">نظام الجمعيات الخيرية: SMART NGO</button>
+        <button class="tab" onclick="changeTab('smart-hr')">نظام الموارد البشرية: SMART HR</button>
+    </div>
 
-<table id="smart-erp" style="display: table;">
-    <tbody></tbody>
-</table>
+    <div id="description" style="padding: 15px; background-color: #f8f9fa; border: 1px solid #ddd; margin: 10px;">
+        <p id="product-description" style="margin: 0; font-size: 16px; font-weight: bold; color: #333;"></p>
+    </div>
 
-<table id="smart-rc" style="display: none;">
-    <tbody></tbody>
-</table>
+    <table id="smart-erp" style="display: table;">
+        <tbody></tbody>
+    </table>
 
-<table id="smart-ngo" style="display: none;">
-    <tbody></tbody>
-</table>
+    <table id="smart-rc" style="display: none;">
+        <tbody></tbody>
+    </table>
 
-<table id="smart-hr" style="display: none;">
-    <tbody></tbody>
-</table>
+    <table id="smart-ngo" style="display: none;">
+        <tbody></tbody>
+    </table>
 
-<!-- زر الواتساب العائم -->
-<!-- زر الواتساب العائم -->
-<a href="https://wa.me/966568954677?text=أرغب في الحصول على نسخة تجريبية" target="_blank">
-    <button class="floating-btn">احصل على نسخة تجريبية</button>
-</a>
+    <table id="smart-hr" style="display: none;">
+        <tbody></tbody>
+    </table>
 
+    <footer>
+        <div class="footer-left">
+            <p class="footer-text">سمارت لايف للأنظمة المحاسبية والإدارية</p>
+        </div>
+        <div class="footer-right">
+            <a href="https://wa.me/966568954677?text=أرغب في الحصول على نسخة تجريبية" target="_blank">
+                <button class="btn-green">احصل على نسخة تجريبية</button>
+            </a>
+        </div>
+    </footer>
 
-<script>
-async function loadProductFeatures(productId) {
-    const fileName = `${productId}.json`;
+    <script>
+        const descriptions = {
+            "smart-erp": "نظام SMART ERP: الحل المتكامل لإدارة الأعمال باحترافية. يتيح لك النظام تتبع كافة المعاملات المالية، إدارة الحسابات، المخزون، المبيعات، المشتريات، والموارد البشرية في نظام موحد ومرن. بالإضافة إلى ذلك، يوفر النظام أدوات متكاملة لإدارة نقاط البيع (POS)، مما يسهل عملية بيع المنتجات وإدارة المدفوعات بشكل سلس وآمن. مع تخزين سحابي غير محدود ودعم فني متواصل على مدار الساعة، يضمن النظام لك تحسين الكفاءة وتقليل الأخطاء في العمليات اليومية. يدعم جميع الأجهزة (Android, iOS, Desktop) ليكون متاحًا في أي وقت وأي مكان.",
+            "smart-rc": "نظام SMART R&C: الحل الأمثل لإدارة المطاعم والكافيهات. يوفر النظام أدوات متكاملة لإدارة الطلبات، الطاولات، المخزون، الرسيبي، المبيعات، والمشتريات. بالإضافة إلى ذلك، يشمل النظام وظيفة إدارة نقاط البيع (POS)، مما يسهل عملية تسجيل المبيعات، إدارة المدفوعات، وتقديم تجربة دفع سلسة للعملاء. كما يتضمن تطبيقًا خاصًا لإدارة المطعم، وتحليل بيانات المبيعات، مما يساعد في تحسين خدمة العملاء واتخاذ قرارات استراتيجية. مع تخزين سحابي غير محدود، ودعم فني مستمر، يضمن لك النظام كفاءة عالية في العمليات اليومية.",
+            "smart-ngo": "نظام SMART NGO: الحل الشامل لإدارة الجمعيات الخيرية بكفاءة. يساعد النظام في تنظيم الأعمال، تتبع التبرعات، إدارة المساعدات، وتوزيع الموارد بشكل منظم وفعّال. يشمل أدوات متكاملة لإدارة الحسابات، إعداد التقارير المالية، وتحليل التبرعات والإنفاق بشكل دقيق. بالإضافة إلى ذلك، يتيح للنظام تتبع الأنشطة الخيرية، إدارة المتطوعين، وحملات التبرع بكل سهولة. مع تخزين سحابي غير محدود، ودعم فني مستمر، يضمن النظام لك إدارة سلسة وفعالة لجميع عمليات الجمعية.",
+            "smart-hr": "نظام SMART HR: الحل الأمثل لإدارة الموارد البشرية. يتيح لك النظام تتبع أداء الموظفين، إدارة الحضور والانصراف، تقييم المهارات، وتنظيم البيانات بشكل آمن. يشمل النظام أدوات متكاملة لإدارة الرواتب، المخالفات، التوظيف، العطل والإجازات، التدريب، التوقيع الإلكتروني، وإدارة المشاريع والمهام. كما يوفر إمكانية التخصيص الكامل للهيكل التنظيمي والإعدادات، مما يضمن لك إدارة الموارد البشرية بكفاءة ومرونة عالية. مع تطبيق موبايل مخصص وواجهة API، يتيح النظام لك مراقبة جميع عمليات الموظفين بسهولة وفي أي وقت."
+        };
 
-    try {
-        const response = await fetch(fileName);
-        const data = await response.json();
+        function loadProductFeatures(productId) {
+            const fileName = `${productId}.json`;
 
-        const table = document.getElementById(productId);
-        const tbody = table.querySelector("tbody");
+            fetch(fileName)
+                .then(response => response.json())
+                .then(data => {
+                    const table = document.getElementById(productId);
+                    const tbody = table.querySelector("tbody");
 
-        tbody.innerHTML = "";
+                    tbody.innerHTML = "";
 
-        for (const [section, features] of Object.entries(data.sections)) {
-            const formattedSectionName = section.replace(/[-_]/g, " ");
+                    Object.entries(data.sections).forEach(([section, features]) => {
+                        const formattedSectionName = section.replace(/[-_]/g, " ");
 
-            const sectionRow = document.createElement("tr");
-            sectionRow.className = "section-header";
-            sectionRow.setAttribute("onclick", `toggleSection('${section}')`);
-            sectionRow.innerHTML = 
-                `<td colspan="${data.packages.length + 2}">
-                    <span class="toggle-icon" id="toggle-icon-${section}">+</span>
-                    ${formattedSectionName}
-                </td>`;
-            tbody.appendChild(sectionRow);
+                        const sectionRow = document.createElement("tr");
+                        sectionRow.className = "section-header";
+                        sectionRow.setAttribute("onclick", `toggleSection('${section}')`);
+                        sectionRow.innerHTML = 
+                            `<td colspan="${data.packages.length + 2}">
+                                <span class="toggle-icon" id="toggle-icon-${section}">+</span>
+                                ${formattedSectionName}
+                            </td>`;
+                        tbody.appendChild(sectionRow);
 
-            const headersRow = document.createElement("tr");
-            headersRow.className = `${section} hidden`;
-            headersRow.innerHTML = `
-                <th>البند بالعربية</th>
-                ${data.packages.map(pkg => `<th class="package">${pkg}</th>`).join("")}
-                <th>البند بالإنجليزية</th>`;
-            tbody.appendChild(headersRow);
+                        const headersRow = document.createElement("tr");
+                        headersRow.className = `${section} hidden`;
+                        headersRow.innerHTML = `
+                            <th>البند بالعربية</th>
+                            ${data.packages.map(pkg => `<th class="package">${pkg}</th>`).join("")}
+                            <th>البند بالإنجليزية</th>`;
+                        tbody.appendChild(headersRow);
 
-            features.forEach(feature => {
-                const row = document.createElement("tr");
-                row.className = `${section} hidden`;
+                        features.forEach(feature => {
+                            const row = document.createElement("tr");
+                            row.className = `${section} hidden`;
 
-                const availabilityCells = feature.availability
-                    .map(avail => `<td>${avail}</td>`)
-                    .join("");
+                            const availabilityCells = feature.availability
+                                .map(avail => `<td>${avail}</td>`)
+                                .join("");
 
-                row.innerHTML = 
-                    `<td>${feature.name_ar}</td>
-                    ${availabilityCells}
-                    <td>${feature.name_en}</td>`;
-                tbody.appendChild(row);
+                            row.innerHTML = 
+                                `<td>${feature.name_ar}</td>
+                                 ${availabilityCells}
+                                 <td>${feature.name_en}</td>`;
+                            tbody.appendChild(row);
+                        });
+                    });
+                })
+                .catch(error => console.error("خطأ في تحميل ملف JSON:", error));
+        }
+
+        function toggleSection(section) {
+            const rows = document.querySelectorAll(`.${section}`);
+            rows.forEach(row => {
+                row.classList.toggle("hidden");
+                row.classList.toggle("highlight", !row.classList.contains("hidden"));
             });
+
+            const toggleIcon = document.getElementById(`toggle-icon-${section}`);
+            toggleIcon.textContent = rows[0].classList.contains("hidden") ? "+" : "-";
         }
-    } catch (error) {
-        console.error("خطأ في تحميل ملف JSON:", error);
-    }
-}
 
-function toggleSection(section) {
-    const rows = document.querySelectorAll(`.${section}`);
-    rows.forEach(row => {
-        row.classList.toggle("hidden");
-        if (!row.classList.contains("hidden")) {
-            row.classList.add("highlight");
-        } else {
-            row.classList.remove("highlight");
+        function changeTab(tabId) {
+            document.querySelectorAll(".tabs .tab").forEach(tab => tab.classList.remove("active"));
+            document.querySelectorAll("table").forEach(table => (table.style.display = "none"));
+
+            document.querySelector(`.tab[onclick="changeTab('${tabId}')"]`).classList.add("active");
+            document.getElementById(tabId).style.display = "table";
+
+            document.getElementById("product-description").textContent = descriptions[tabId];
+
+            loadProductFeatures(tabId);
         }
-    });
 
-    const toggleIcon = document.getElementById(`toggle-icon-${section}`);
-    if (rows[0].classList.contains("hidden")) {
-        toggleIcon.textContent = "+"; // تغيير العلامة إلى + عند الإغلاق
-    } else {
-        toggleIcon.textContent = "-"; // تغيير العلامة إلى - عند الفتح
-    }
-}
-
-function changeTab(tabId) {
-    document.querySelectorAll(".tabs .tab").forEach(tab => tab.classList.remove("active"));
-    document.querySelectorAll("table").forEach(table => (table.style.display = "none"));
-
-    document.querySelector(`.tab[onclick="changeTab('${tabId}')"]`).classList.add("active");
-    document.getElementById(tabId).style.display = "table";
-
-    loadProductFeatures(tabId);
-}
-
-loadProductFeatures('smart-erp');
-</script>
+        document.getElementById("product-description").textContent = descriptions['smart-erp'];
+        loadProductFeatures('smart-erp');
+    </script>
 
 </body>
+
 </html>
