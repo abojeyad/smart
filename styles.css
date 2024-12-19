@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.tabs {
+    display: flex;
+    background-color: #34495e;
+    padding: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.tab {
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+    background-color: #2c3e50;
+    transition: background-color 0.3s, border-color 0.3s;
+    border-radius: 5px;
+}
+
+.tab:hover {
+    background-color: #16a085;
+    border-color: #1abc9c;
+}
+
+.tab.active {
+    background-color: #1abc9c;
+    border-color: #16a085;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    overflow-x: auto;
+    display: block;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+.section-header {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.toggle-icon {
+    float: left;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.highlight {
+    background-color: #eaffea;
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    th,
+    td {
+        font-size: 10px;
+        padding: 6px;
+    }
+}
+
+footer {
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #16a085;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #1abc9c;
+}
+
+.footer-text {
+    font-size: 16px;
+}
+
+.footer-left,
+.footer-right {
+    align-items: center;
+}
+
+.btn-green {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-green:hover {
+    background-color: #218838;
+}
