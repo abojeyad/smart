@@ -92,9 +92,9 @@ function loadProductFeatures(productId) {
                 const headersRow = document.createElement("tr");
                 headersRow.className = `${section} hidden`;
                 headersRow.innerHTML = `
-                    <th>البند بالعربية</th>
+                    <th>الوصف</th>
                     ${data.packages.map(pkg => `<th class="package">${pkg}</th>`).join("")}
-                    <th>البند بالإنجليزية</th>`;
+                    <th>Description</th>`;
                 tbody.appendChild(headersRow);
 
                 features.forEach(feature => {
