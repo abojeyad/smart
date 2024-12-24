@@ -37,9 +37,18 @@
         <tbody></tbody>
     </table>
 
+<div id="videos-section" style="display: none;">
+    <h3>شاهد الفيديوهات</h3>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/DFhU3fw_I5Y" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/8b7XxSbDKW4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+
     <footer>
         <div class="footer-left">
-            <p class="footer-text">سمارت لايف للأنظمة المحاسبية والإدارية</p>
+            <p class="footer-text">SMART ERP</p>
         </div>
         <div class="footer-right">
             <a href="https://wa.me/966568954677?text=أرغب في الحصول على نسخة تجريبية" target="_blank">
@@ -49,89 +58,115 @@
     </footer>
 
     <script>
-        const descriptions = {
-            "smart-erp": "نظام SMART ERP: الحل المتكامل لإدارة الأعمال باحترافية. يتيح لك النظام تتبع كافة المعاملات المالية، إدارة الحسابات، المخزون، المبيعات، المشتريات، والموارد البشرية في نظام موحد ومرن. بالإضافة إلى ذلك، يوفر النظام أدوات متكاملة لإدارة نقاط البيع (POS)، مما يسهل عملية بيع المنتجات وإدارة المدفوعات بشكل سلس وآمن. مع تخزين سحابي غير محدود ودعم فني متواصل على مدار الساعة، يضمن النظام لك تحسين الكفاءة وتقليل الأخطاء في العمليات اليومية. يدعم جميع الأجهزة (Android, iOS, Desktop) ليكون متاحًا في أي وقت وأي مكان.",
-            "smart-rc": "نظام SMART R&C: الحل الأمثل لإدارة المطاعم والكافيهات. يوفر النظام أدوات متكاملة لإدارة الطلبات، الطاولات، المخزون، الرسيبي، المبيعات، والمشتريات. بالإضافة إلى ذلك، يشمل النظام وظيفة إدارة نقاط البيع (POS)، مما يسهل عملية تسجيل المبيعات، إدارة المدفوعات، وتقديم تجربة دفع سلسة للعملاء. كما يتضمن تطبيقًا خاصًا لإدارة المطعم، وتحليل بيانات المبيعات، مما يساعد في تحسين خدمة العملاء واتخاذ قرارات استراتيجية. مع تخزين سحابي غير محدود، ودعم فني مستمر، يضمن لك النظام كفاءة عالية في العمليات اليومية.",
-            "smart-ngo": "نظام SMART NGO: الحل الشامل لإدارة الجمعيات الخيرية بكفاءة. يساعد النظام في تنظيم الأعمال، تتبع التبرعات، إدارة المساعدات، وتوزيع الموارد بشكل منظم وفعّال. يشمل أدوات متكاملة لإدارة الحسابات، إعداد التقارير المالية، وتحليل التبرعات والإنفاق بشكل دقيق. بالإضافة إلى ذلك، يتيح للنظام تتبع الأنشطة الخيرية، إدارة المتطوعين، وحملات التبرع بكل سهولة. مع تخزين سحابي غير محدود، ودعم فني مستمر، يضمن النظام لك إدارة سلسة وفعالة لجميع عمليات الجمعية.",
-            "smart-hr": "نظام SMART HR: الحل الأمثل لإدارة الموارد البشرية. يتيح لك النظام تتبع أداء الموظفين، إدارة الحضور والانصراف، تقييم المهارات، وتنظيم البيانات بشكل آمن. يشمل النظام أدوات متكاملة لإدارة الرواتب، المخالفات، التوظيف، العطل والإجازات، التدريب، التوقيع الإلكتروني، وإدارة المشاريع والمهام. كما يوفر إمكانية التخصيص الكامل للهيكل التنظيمي والإعدادات، مما يضمن لك إدارة الموارد البشرية بكفاءة ومرونة عالية. مع تطبيق موبايل مخصص وواجهة API، يتيح النظام لك مراقبة جميع عمليات الموظفين بسهولة وفي أي وقت."
-        };
+const descriptions = {
+    "smart-erp": "نظام SMART ERP: الحل المتكامل لإدارة الأعمال باحترافية. يتيح لك النظام تتبع كافة المعاملات المالية، إدارة الحسابات، المخزون، المبيعات، المشتريات، والموارد البشرية في نظام موحد ومرن. بالإضافة إلى ذلك، يوفر النظام أدوات متكاملة لإدارة نقاط البيع (POS)، مما يسهل عملية بيع المنتجات وإدارة المدفوعات بشكل سلس وآمن. مع تخزين سحابي غير محدود ودعم فني متواصل على مدار الساعة، يضمن النظام لك تحسين الكفاءة وتقليل الأخطاء في العمليات اليومية. يدعم جميع الأجهزة (Android, iOS, Desktop) ليكون متاحًا في أي وقت وأي مكان.",
+    "smart-rc": "نظام SMART R&C: الحل الأمثل لإدارة المطاعم والكافيهات. يوفر النظام أدوات متكاملة لإدارة الطلبات، الطاولات، المخزون، الرسيبي، المبيعات، والمشتريات. بالإضافة إلى ذلك، يشمل النظام وظيفة إدارة نقاط البيع (POS)، مما يسهل عملية تسجيل المبيعات، إدارة المدفوعات، وتقديم تجربة دفع سلسة للعملاء. كما يتضمن تطبيقًا خاصًا لإدارة المطعم، وتحليل بيانات المبيعات، مما يساعد في تحسين خدمة العملاء واتخاذ قرارات استراتيجية. مع تخزين سحابي غير محدود، ودعم فني مستمر، يضمن لك النظام كفاءة عالية في العمليات اليومية.",
+    "smart-ngo": "نظام SMART NGO: الحل الشامل لإدارة الجمعيات الخيرية بكفاءة. يساعد النظام في تنظيم الأعمال، تتبع التبرعات، إدارة المساعدات، وتوزيع الموارد بشكل منظم وفعّال. يشمل أدوات متكاملة لإدارة الحسابات، إعداد التقارير المالية، وتحليل التبرعات والإنفاق بشكل دقيق. بالإضافة إلى ذلك، يتيح للنظام تتبع الأنشطة الخيرية، إدارة المتطوعين، وحملات التبرع بكل سهولة. مع تخزين سحابي غير محدود، ودعم فني مستمر، يضمن النظام لك إدارة سلسة وفعالة لجميع عمليات الجمعية.",
+    "smart-hr": "نظام SMART HR: الحل الأمثل لإدارة الموارد البشرية. يتيح لك النظام تتبع أداء الموظفين، إدارة الحضور والانصراف، تقييم المهارات، وتنظيم البيانات بشكل آمن. يشمل النظام أدوات متكاملة لإدارة الرواتب، المخالفات، التوظيف، العطل والإجازات، التدريب، التوقيع الإلكتروني، وإدارة المشاريع والمهام. كما يوفر إمكانية التخصيص الكامل للهيكل التنظيمي والإعدادات، مما يضمن لك إدارة الموارد البشرية بكفاءة ومرونة عالية. مع تطبيق موبايل مخصص وواجهة API، يتيح النظام لك مراقبة جميع عمليات الموظفين بسهولة وفي أي وقت."
+};
 
-        function loadProductFeatures(productId) {
-            const fileName = `${productId}.json`;
+function loadProductFeatures(productId) {
+    const fileName = `${productId}.json`;
 
-            fetch(fileName)
-                .then(response => response.json())
-                .then(data => {
-                    const table = document.getElementById(productId);
-                    const tbody = table.querySelector("tbody");
+    fetch(fileName)
+        .then(response => response.json())
+        .then(data => {
+            const table = document.getElementById(productId);
+            const tbody = table.querySelector("tbody");
 
-                    tbody.innerHTML = "";
+            tbody.innerHTML = "";
 
-                    Object.entries(data.sections).forEach(([section, features]) => {
-                        const formattedSectionName = section.replace(/[-_]/g, " ");
+            Object.entries(data.sections).forEach(([section, features]) => {
+                const formattedSectionName = section.replace(/[-_]/g, " ");
 
-                        const sectionRow = document.createElement("tr");
-                        sectionRow.className = "section-header";
-                        sectionRow.setAttribute("onclick", `toggleSection('${section}')`);
-                        sectionRow.innerHTML = 
-                            `<td colspan="${data.packages.length + 2}">
-                                <span class="toggle-icon" id="toggle-icon-${section}">+</span>
-                                ${formattedSectionName}
-                            </td>`;
-                        tbody.appendChild(sectionRow);
+                const sectionRow = document.createElement("tr");
+                sectionRow.className = "section-header";
+                sectionRow.setAttribute("onclick", `toggleSection('${section}')`);
+                sectionRow.innerHTML = 
+                    `<td colspan="${data.packages.length + 2}">
+                        <span class="toggle-icon" id="toggle-icon-${section}">+</span>
+                        ${formattedSectionName}
+                    </td>`;
+                tbody.appendChild(sectionRow);
 
-                        const headersRow = document.createElement("tr");
-                        headersRow.className = `${section} hidden`;
-                        headersRow.innerHTML = `
-                            <th>البند بالعربية</th>
-                            ${data.packages.map(pkg => `<th class="package">${pkg}</th>`).join("")}
-                            <th>البند بالإنجليزية</th>`;
-                        tbody.appendChild(headersRow);
+                const headersRow = document.createElement("tr");
+                headersRow.className = `${section} hidden`;
+                headersRow.innerHTML = `
+                    <th>البند بالعربية</th>
+                    ${data.packages.map(pkg => `<th class="package">${pkg}</th>`).join("")}
+                    <th>البند بالإنجليزية</th>`;
+                tbody.appendChild(headersRow);
 
-                        features.forEach(feature => {
-                            const row = document.createElement("tr");
-                            row.className = `${section} hidden`;
+                features.forEach(feature => {
+                    const row = document.createElement("tr");
+                    row.className = `${section} hidden`;
 
-                            const availabilityCells = feature.availability
-                                .map(avail => `<td>${avail}</td>`)
-                                .join("");
+                    const availabilityCells = feature.availability
+                        .map(avail => `<td>${avail}</td>`)
+                        .join("");
 
-                            row.innerHTML = 
-                                `<td>${feature.name_ar}</td>
-                                 ${availabilityCells}
-                                 <td>${feature.name_en}</td>`;
-                            tbody.appendChild(row);
-                        });
-                    });
-                })
-                .catch(error => console.error("خطأ في تحميل ملف JSON:", error));
-        }
-
-        function toggleSection(section) {
-            const rows = document.querySelectorAll(`.${section}`);
-            rows.forEach(row => {
-                row.classList.toggle("hidden");
-                row.classList.toggle("highlight", !row.classList.contains("hidden"));
+                    row.innerHTML = 
+                        `<td>${feature.name_ar}</td>
+                         ${availabilityCells}
+                         <td>${feature.name_en}</td>`;
+                    tbody.appendChild(row);
+                });
             });
+        })
+        .catch(error => console.error("خطأ في تحميل ملف JSON:", error));
+}
 
-            const toggleIcon = document.getElementById(`toggle-icon-${section}`);
-            toggleIcon.textContent = rows[0].classList.contains("hidden") ? "+" : "-";
-        }
+function toggleSection(section) {
+    const rows = document.querySelectorAll(`.${section}`);
+    rows.forEach(row => {
+        row.classList.toggle("hidden");
+        row.classList.toggle("highlight", !row.classList.contains("hidden"));
+    });
 
-        function changeTab(tabId) {
-            document.querySelectorAll(".tabs .tab").forEach(tab => tab.classList.remove("active"));
-            document.querySelectorAll("table").forEach(table => (table.style.display = "none"));
+    const toggleIcon = document.getElementById(`toggle-icon-${section}`);
+    toggleIcon.textContent = rows[0].classList.contains("hidden") ? "+" : "-";
+}
 
-            document.querySelector(`.tab[onclick="changeTab('${tabId}')"]`).classList.add("active");
-            document.getElementById(tabId).style.display = "table";
+function changeTab(tabId) {
+    document.querySelectorAll(".tabs .tab").forEach(tab => tab.classList.remove("active"));
+    document.querySelectorAll("table").forEach(table => (table.style.display = "none"));
 
-            document.getElementById("product-description").textContent = descriptions[tabId];
+    // إخفاء الفيديوهات في التابات الأخرى
+    const videosSection = document.getElementById("videos-section");
+    videosSection.style.display = "none";
 
-            loadProductFeatures(tabId);
-        }
+    document.querySelector(`.tab[onclick="changeTab('${tabId}')"]`).classList.add("active");
+    document.getElementById(tabId).style.display = "table";
 
-        document.getElementById("product-description").textContent = descriptions['smart-erp'];
-        loadProductFeatures('smart-erp');
+    document.getElementById("product-description").textContent = descriptions[tabId];
+
+    // إظهار الفيديوهات فقط في SMART ERP و SMART R&C
+    if (tabId === "smart-erp" || tabId === "smart-rc") {
+        videosSection.style.display = "block";
+        // تشغيل الفيديوهات
+        playVideos();
+    }
+
+    loadProductFeatures(tabId);
+}
+
+function playVideos() {
+    // نشر رسالة لتشغيل الفيديوهات باستخدام postMessage في iframe
+    const iframes = document.querySelectorAll('#videos-section iframe');
+    iframes.forEach(iframe => {
+        const message = { event: 'command', func: 'playVideo' };
+        iframe.contentWindow.postMessage(JSON.stringify(message), '*');
+    });
+}
+
+document.getElementById("product-description").textContent = descriptions['smart-erp'];
+loadProductFeatures('smart-erp');
+
+// عند تحميل الصفحة، تأكد من إظهار الفيديوهات في التاب الافتراضي
+window.onload = function() {
+    changeTab('smart-erp');
+};
+
     </script>
 
 </body>
