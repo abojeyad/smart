@@ -159,26 +159,8 @@
     </div>
 </div>
 
-<!-- زر عائم لإضافة قالب جديد -->
-<div class="floating-btn" onclick="openAddProductPopup()">+</div>
-
-<!-- نافذة إدخال المنتج -->
-<div id="add-product-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; border:1px solid #ddd; padding:20px; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1);">
-    <h2>إضافة قالب جديد</h2>
-    <div class="note">
-        <p><strong>ملاحظة:</strong> قبل إضافة قالب جديد، تأكد من رفعه أولاً إلى حسابك على <strong>جوجل درايف</strong>.</p>
-        <p>بعد رفع القالب، انسخ الرابط المباشر للقالب وضعه في الحقول المخصصة. يرجى التأكد من أن صلاحية الوصول إلى الملف على درايف هي <strong>مفتوحة للجميع</strong> لكي يتمكن الآخرون من تحميله.</p>
-    </div>
-
-    <label>عنوان القالب:</label>
-    <input type="text" id="product-title" style="width:100%; margin-bottom:10px;" />
-    <label>أضف رابط الملف الـPDF:</label>
-    <input type="text" id="product-pdf" style="width:100%; margin-bottom:10px;" />
-    <label>أضف رابط ملف القالب HTML: (اختياري)</label>
-    <input type="text" id="product-html" style="width:100%; margin-bottom:10px;" />
-    <button onclick="addProduct()">إضافة القالب</button>
-    <button onclick="closeAddProductPopup()">إلغاء</button>
-</div>
+<!-- زر عائم للتوجه إلى فورم جوجل مباشرة -->
+<div class="floating-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfwgTllxLC2P9gGcGlzEHflSazaHzm9t30OgnNoVJS1TAirmA/viewform', '_blank')">+</div>
 
 <script>
 // مصفوفة الألوان
@@ -194,50 +176,6 @@ function convertToDirectDownloadLink(driveLink) {
 function getFileId(driveLink) {
     const match = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
     return match ? match[1] : null;
-}
-
-// دالة لفتح نافذة إدخال المنتج
-function openAddProductPopup() {
-    document.getElementById('add-product-popup').style.display = 'block';
-}
-
-// دالة لإغلاق نافذة إدخال المنتج
-function closeAddProductPopup() {
-    document.getElementById('add-product-popup').style.display = 'none';
-}
-
-// دالة لإضافة منتج جديد
-function addProduct() {
-    const title = document.getElementById('product-title').value;
-    const pdf = document.getElementById('product-pdf').value;
-    const html = document.getElementById('product-html').value;
-
-    if (!title || !pdf) { // التحقق من الحقول الإلزامية فقط
-        alert('يرجى تعبئة الحقول الإلزامية: العنوان ورابط PDF!');
-        return;
-    }
-
-    const newProduct = {
-        title: title,
-        buttonA: pdf,
-        buttonB: html // يمكن أن يكون فارغًا
-    };
-
-    // إرسال المنتج إلى الخادم
-    fetch('/add-product', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newProduct)
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('تمت إضافة المنتج بنجاح!');
-            closeAddProductPopup();
-            location.reload(); // تحديث الصفحة لعرض المنتج الجديد
-        } else {
-            alert('حدث خطأ أثناء الإضافة!');
-        }
-    });
 }
 
 // تحميل المنتجات عند فتح الصفحة

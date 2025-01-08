@@ -1,3 +1,22 @@
 [
-
+  {
+    "title": "قالب مبيعات (يحتوي على 9 أعمدة بيانات)",
+    "buttonA": "https://drive.google.com/file/d/1ZobnKqbGrmCmqdRjhwVXPBEVEh02ZRo_/view?usp=drive_link",
+    "buttonB": "https://drive.google.com/file/d/1WU7hfetja71J11RNqd8vM95Rd1arclkN/view?usp=drive_link"
+  },
+  {
+    "title": "قالب مبيعات A4 يحتوي على 7 أعمدة بيانات",
+    "buttonA": "https://drive.google.com/file/d/19kDat2g1GhbDx7c2fgmG7-uWmDQom98K/view?usp=drive_link",
+    "buttonB": "https://drive.google.com/file/d/16lEYj0xtj1mpmqjozQhy7MqQ4WJUOCEh/view?usp=drive_link"
+  },
+  {
+    "title": "قالب مبيعات A4 ورقتين",
+    "buttonA": "https://drive.google.com/file/d/11ZygLx8zb1M2M9_VXtUWAC0VFMM5C7BP/view?usp=drive_link",
+    "buttonB": "https://drive.google.com/file/d/1ndSibYOmuJGDSUBChE7H5XSqeTamazGt/view?usp=drive_link"
+  },
+  {
+    "title": "قالب مبيعات A4 لون أخضر",
+    "buttonA": "https://drive.google.com/file/d/1i-SnjiKgbeUULzHhhUyOd2XUfhLpLs4s/view?usp=drive_link",
+    "buttonB": ""
+  }
 ]
