@@ -1,158 +1,277 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>جدول الميزات</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART LIFE</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --hover-color: #45a049;
+            --text-color: white;
+            --border-color: white;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            flex-grow: 1;
+            text-align: right;
+        }
+        .contact-sales-btn {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .contact-sales-btn:hover {
+            background-color: var(--hover-color);
+        }
+        .container {
+            padding: 20px;
+        }
+        #products-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-box {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 180px;
+            height: 230px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+        .product-title {
+            font-size: 18px;
+            color: var(--text-color);
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .product-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            align-items: center;
+        }
+        .product-buttons a, .product-buttons button {
+            display: block;
+            background-color: transparent;
+            color: var(--text-color);
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .product-buttons a:hover, .product-buttons button:hover {
+            background-color: var(--text-color);
+            color: black;
+        }
+        @media (max-width: 600px) {
+            .product-box {
+                width: 100%;
+                height: auto;
+            }
+            .product-buttons {
+                flex-direction: column;
+            }
+        }
 
+        /* زر عائم */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .floating-btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        /* تنسيق الملاحظة */
+        .note {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        .note strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
 <body>
 
-    <div class="tabs">
-        <button class="tab active" onclick="changeTab('smart-erp')">النظام المحاسبي ونقاط البيع: SMART ERP</button>
-        <button class="tab" onclick="changeTab('smart-rc')">نظام المطاعم والكافيهات: SMART R&C</button>
-        <button class="tab" onclick="changeTab('smart-ngo')">نظام الجمعيات الخيرية: SMART NGO</button>
-        <button class="tab" onclick="changeTab('smart-hr')">نظام الموارد البشرية: SMART HR</button>
+<header>
+    <h1>SMART LIFE</h1>
+    <a href="https://wa.me/0568954677" class="contact-sales-btn">التواصل مع المبيعات 0568954677</a>
+</header>
+
+<div class="container">
+    <div id="products-container">
+        <!-- سيتم إضافة المنتجات هنا بواسطة JavaScript -->
+    </div>
+</div>
+
+<!-- زر عائم لإضافة قالب جديد -->
+<div class="floating-btn" onclick="openAddProductPopup()">+</div>
+
+<!-- نافذة إدخال المنتج -->
+<div id="add-product-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; border:1px solid #ddd; padding:20px; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1);">
+    <h2>إضافة قالب جديد</h2>
+    <div class="note">
+        <p><strong>ملاحظة:</strong> قبل إضافة قالب جديد، تأكد من رفعه أولاً إلى حسابك على <strong>جوجل درايف</strong>.</p>
+        <p>بعد رفع القالب، انسخ الرابط المباشر للقالب وضعه في الحقول المخصصة. يرجى التأكد من أن صلاحية الوصول إلى الملف على درايف هي <strong>مفتوحة للجميع</strong> لكي يتمكن الآخرون من تحميله.</p>
     </div>
 
-    <div id="description" style="padding: 15px; background-color: #f8f9fa; border: 1px solid #ddd; margin: 10px;">
-        <p id="product-description" style="margin: 0; font-size: 16px; font-weight: bold; color: #333;"></p>
-    </div>
+    <label>عنوان القالب:</label>
+    <input type="text" id="product-title" style="width:100%; margin-bottom:10px;" />
+    <label>أضف رابط الملف الـPDF:</label>
+    <input type="text" id="product-pdf" style="width:100%; margin-bottom:10px;" />
+    <label>أضف رابط ملف القالب HTML: (اختياري)</label>
+    <input type="text" id="product-html" style="width:100%; margin-bottom:10px;" />
+    <button onclick="addProduct()">إضافة القالب</button>
+    <button onclick="closeAddProductPopup()">إلغاء</button>
+</div>
 
-    <table id="smart-erp" style="display: table;">
-        <tbody></tbody>
-    </table>
+<script>
+// مصفوفة الألوان
+const colors = ["#FF5733", "#33FF57", "#5733FF", "#FF33A1", "#33FFF5", "#FFC533"];
 
-    <table id="smart-rc" style="display: none;">
-        <tbody></tbody>
-    </table>
+// دالة لتحويل رابط Google Drive إلى رابط تنزيل مباشر
+function convertToDirectDownloadLink(driveLink) {
+    const fileId = getFileId(driveLink);
+    return fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : driveLink;
+}
 
-    <table id="smart-ngo" style="display: none;">
-        <tbody></tbody>
-    </table>
+// استخراج معرف الملف من رابط Google Drive
+function getFileId(driveLink) {
+    const match = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    return match ? match[1] : null;
+}
 
-    <table id="smart-hr" style="display: none;">
-        <tbody></tbody>
-    </table>
+// دالة لفتح نافذة إدخال المنتج
+function openAddProductPopup() {
+    document.getElementById('add-product-popup').style.display = 'block';
+}
 
-    <div id="videos-section" style="display: none;">
-        <h3>شاهد الفيديوهات</h3>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/DFhU3fw_I5Y" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/8b7XxSbDKW4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
+// دالة لإغلاق نافذة إدخال المنتج
+function closeAddProductPopup() {
+    document.getElementById('add-product-popup').style.display = 'none';
+}
 
-    <footer>
-        <div class="footer-left">
-            <p class="footer-text">SMART LIFE</p>
-        </div>
-        <div class="footer-right">
-            <a href="https://wa.me/966568954677?text=أرغب في الحصول على نسخة تجريبية" target="_blank">
-                <button class="btn-green">احصل على نسخة تجريبية</button>
-            </a>
-        </div>
-    </footer>
+// دالة لإضافة منتج جديد
+function addProduct() {
+    const title = document.getElementById('product-title').value;
+    const pdf = document.getElementById('product-pdf').value;
+    const html = document.getElementById('product-html').value;
 
-    <script>
-    const descriptions = {
-        "smart-erp": "نظام SMART ERP هو الحل المتكامل لإدارة الأعمال، حيث يوفر إدارة المعاملات المالية، الحسابات، المخزون، المبيعات، المشتريات، نقاط البيع، والموارد البشرية في نظام واحد. يشمل تخزين سحابي غير محدود ودعم فني على مدار الساعة، ويدعم جميع الأجهزة (Android, iOS, Desktop) لضمان سهولة الوصول والكفاءة في العمل.",
-        "smart-rc": "نظام SMART R&C هو الحل المثالي لإدارة المطاعم والكافيهات، حيث يوفر أدوات شاملة لإدارة الطلبات، الطاولات، المخزون، الرسيبي، المبيعات، والمشتريات. ونقاط البيع (POS) لتسهيل تسجيل المبيعات، إدارة المدفوعات، وتقديم تجربة دفع سلسة للعملاء. كما يتضمن تطبيق خاص لإدارة المطعم وتحليل بيانات المبيعات، ويوفر تخزين سحابي غير محدود ودعم فني مستمر على مدار الساعة.",
-        "smart-ngo": "نظام SMART NGO: الحل الشامل لإدارة الجمعيات الخيرية بكفاءة. يساعد النظام في تنظيم الأعمال، تتبع التبرعات، إدارة المساعدات، وتوزيع الموارد بشكل منظم وفعّال. يشمل أدوات متكاملة لإدارة الحسابات، إعداد التقارير المالية، وتحليل التبرعات والإنفاق بشكل دقيق. بالإضافة إلى ذلك، يتيح للنظام تتبع الأنشطة الخيرية، إدارة المتطوعين، وحملات التبرع بكل سهولة. مع تخزين سحابي غير محدود، ودعم فني مستمر، يضمن النظام لك إدارة سلسة وفعالة لجميع عمليات الجمعية.",
-        "smart-hr": "نظام SMART HR: الحل الأمثل لإدارة الموارد البشرية. يتيح لك النظام تتبع أداء الموظفين، إدارة الحضور والانصراف، تقييم المهارات، وتنظيم البيانات بشكل آمن. يشمل النظام أدوات متكاملة لإدارة الرواتب، المخالفات، التوظيف، العطل والإجازات، التدريب، التوقيع الإلكتروني، وإدارة المشاريع والمهام. كما يوفر إمكانية التخصيص الكامل للهيكل التنظيمي والإعدادات، مما يضمن لك إدارة الموارد البشرية بكفاءة ومرونة عالية. مع تطبيق موبايل مخصص وواجهة API، يتيح النظام لك مراقبة جميع عمليات الموظفين بسهولة وفي أي وقت."
+    if (!title || !pdf) { // التحقق من الحقول الإلزامية فقط
+        alert('يرجى تعبئة الحقول الإلزامية: العنوان ورابط PDF!');
+        return;
+    }
+
+    const newProduct = {
+        title: title,
+        buttonA: pdf,
+        buttonB: html // يمكن أن يكون فارغًا
     };
 
-        function loadProductFeatures(productId) {
-            const fileName = `${productId}.json`;
-
-            fetch(fileName)
-                .then(response => response.json())
-                .then(data => {
-                    const table = document.getElementById(productId);
-                    const tbody = table.querySelector("tbody");
-
-                    tbody.innerHTML = "";
-
-                    Object.entries(data.sections).forEach(([section, features]) => {
-                        const formattedSectionName = section.replace(/[-_]/g, " ");
-
-                        const sectionRow = document.createElement("tr");
-                        sectionRow.className = "section-header";
-                        sectionRow.setAttribute("onclick", `toggleSection('${section}')`);
-                        sectionRow.innerHTML =
-                            `<td colspan="${data.packages.length + 2}">
-                                <span class="toggle-icon" id="toggle-icon-${section}">-</span>
-                                ${formattedSectionName}
-                            </td>`;
-                        tbody.appendChild(sectionRow);
-
-                        const headersRow = document.createElement("tr");
-                        headersRow.className = `${section}`;
-                        headersRow.innerHTML = `
-                            <th>الوصف</th>
-                            ${data.packages.map(pkg => `<th class="package">${pkg}</th>`).join("")}
-                            <th>Description</th>`;
-                        tbody.appendChild(headersRow);
-
-                        features.forEach(feature => {
-                            const row = document.createElement("tr");
-                            row.className = `${section}`;
-
-                            const availabilityCells = feature.availability
-                                .map(avail => `<td>${avail}</td>`)
-                                .join("");
-
-                            row.innerHTML =
-                                `<td>${feature.name_ar}</td>
-                                 ${availabilityCells}
-                                 <td>${feature.name_en}</td>`;
-                            tbody.appendChild(row);
-                        });
-                    });
-                })
-                .catch(error => console.error("خطأ في تحميل ملف JSON:", error));
+    // إرسال المنتج إلى الخادم
+    fetch('/add-product', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newProduct)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('تمت إضافة المنتج بنجاح!');
+            closeAddProductPopup();
+            location.reload(); // تحديث الصفحة لعرض المنتج الجديد
+        } else {
+            alert('حدث خطأ أثناء الإضافة!');
         }
+    });
+}
 
-        function toggleSection(section) {
-            const rows = document.querySelectorAll(`.${section}`);
-            rows.forEach(row => {
-                row.classList.toggle("hidden");
-                row.classList.toggle("highlight", !row.classList.contains("hidden"));
-            });
+// تحميل المنتجات عند فتح الصفحة
+fetch('/products')
+    .then(response => response.json())
+    .then(data => {
+        const container = document.getElementById('products-container');
+        data.forEach((product, index) => {
+            const productBox = document.createElement('div');
+            productBox.classList.add('product-box');
 
-            const toggleIcon = document.getElementById(`toggle-icon-${section}`);
-            toggleIcon.textContent = rows[0].classList.contains("hidden") ? "+" : "-";
-        }
+            // تعيين لون خلفية المنتج
+            const color = colors[index % colors.length];
+            productBox.style.backgroundColor = color;
 
-        function changeTab(tabId) {
-            document.querySelectorAll(".tabs .tab").forEach(tab => tab.classList.remove("active"));
-            document.querySelectorAll("table").forEach(table => (table.style.display = "none"));
+            const directPdfLink = convertToDirectDownloadLink(product.buttonA);
+            const directHtmlLink = product.buttonB ? convertToDirectDownloadLink(product.buttonB) : null; // التحقق من وجود الرابط
 
-            const videosSection = document.getElementById("videos-section");
-            videosSection.style.display = "none";
+            // إضافة الزر فقط إذا كان رابط HTML موجودًا
+            productBox.innerHTML = `
+                <div class="product-title">${product.title}</div>
+                <div class="product-buttons">
+                    <a href="${product.buttonA}" target="_blank">معاينة</a>
+                    <a href="${directPdfLink}" download>تحميل مباشر PDF</a>
+                    ${directHtmlLink ? `<a href="${directHtmlLink}" download>تحميل مباشر - HTML</a>` : ''}
+                </div>
+            `;
 
-            document.querySelector(`.tab[onclick="changeTab('${tabId}')"]`).classList.add("active");
-            document.getElementById(tabId).style.display = "table";
+            container.appendChild(productBox);
+        });
+    })
+    .catch(error => console.error("Error loading products:", error));
 
-            document.getElementById("product-description").textContent = descriptions[tabId];
-
-            if (tabId === "smart-erp" || tabId === "smart-rc") {
-                videosSection.style.display = "block";
-            }
-
-            loadProductFeatures(tabId);
-        }
-
-        document.getElementById("product-description").textContent = descriptions['smart-erp'];
-        loadProductFeatures('smart-erp');
-
-        window.onload = function() {
-            changeTab('smart-erp');
-        };
-    </script>
+</script>
 
 </body>
-
 </html>
