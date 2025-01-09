@@ -166,20 +166,8 @@
 // مصفوفة الألوان
 const colors = ["#FF5733", "#33FF57", "#5733FF", "#FF33A1", "#33FFF5", "#FFC533"];
 
-// دالة لتحويل رابط Google Drive إلى رابط تنزيل مباشر
-function convertToDirectDownloadLink(driveLink) {
-    const fileId = getFileId(driveLink);
-    return fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : driveLink;
-}
-
-// استخراج معرف الملف من رابط Google Drive
-function getFileId(driveLink) {
-    const match = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
-    return match ? match[1] : null;
-}
-
 // تحميل المنتجات عند فتح الصفحة
-fetch('/products')
+fetch('./products.json') // يشير إلى ملف JSON المستضاف على GitHub Pages
     .then(response => response.json())
     .then(data => {
         const container = document.getElementById('products-container');
@@ -209,6 +197,17 @@ fetch('/products')
     })
     .catch(error => console.error("Error loading products:", error));
 
+// دالة لتحويل رابط Google Drive إلى رابط تنزيل مباشر
+function convertToDirectDownloadLink(driveLink) {
+    const fileId = getFileId(driveLink);
+    return fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : driveLink;
+}
+
+// استخراج معرف الملف من رابط Google Drive
+function getFileId(driveLink) {
+    const match = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    return match ? match[1] : null;
+}
 </script>
 
 </body>
