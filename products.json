@@ -1,22 +1,62 @@
 [
-  {
-    "title": "قالب مبيعات (يحتوي على 9 أعمدة بيانات)",
-    "buttonA": "https://drive.google.com/file/d/1ZobnKqbGrmCmqdRjhwVXPBEVEh02ZRo_/view?usp=drive_link",
-    "buttonB": "https://drive.google.com/file/d/1WU7hfetja71J11RNqd8vM95Rd1arclkN/view?usp=drive_link"
-  },
-  {
-    "title": "قالب مبيعات A4 يحتوي على 7 أعمدة بيانات",
-    "buttonA": "https://drive.google.com/file/d/19kDat2g1GhbDx7c2fgmG7-uWmDQom98K/view?usp=drive_link",
-    "buttonB": "https://drive.google.com/file/d/16lEYj0xtj1mpmqjozQhy7MqQ4WJUOCEh/view?usp=drive_link"
-  },
-  {
-    "title": "قالب مبيعات A4 ورقتين",
-    "buttonA": "https://drive.google.com/file/d/11ZygLx8zb1M2M9_VXtUWAC0VFMM5C7BP/view?usp=drive_link",
-    "buttonB": "https://drive.google.com/file/d/1ndSibYOmuJGDSUBChE7H5XSqeTamazGt/view?usp=drive_link"
-  },
-  {
-    "title": "قالب مبيعات A4 لون أخضر",
-    "buttonA": "https://drive.google.com/file/d/1i-SnjiKgbeUULzHhhUyOd2XUfhLpLs4s/view?usp=drive_link",
-    "buttonB": ""
-  }
+    {
+        "title": "قالب مبيعات (يحتوي على 9 أعمدة بيانات)",
+        "buttonA": "https://drive.google.com/file/d/1ZobnKqbGrmCmqdRjhwVXPBEVEh02ZRo_/view?usp=drive_link",
+        "buttonB": "https://drive.google.com/file/d/1WU7hfetja71J11RNqd8vM95Rd1arclkN/view?usp=drive_link"
+    },
+    {
+        "title": "قالب مبيعات A4 يحتوي على 7 أعمدة بيانات",
+        "buttonA": "https://drive.google.com/file/d/19kDat2g1GhbDx7c2fgmG7-uWmDQom98K/view?usp=drive_link",
+        "buttonB": "https://drive.google.com/file/d/16lEYj0xtj1mpmqjozQhy7MqQ4WJUOCEh/view?usp=drive_link"
+    },
+    {
+        "title": "قالب مبيعات A4 ورقتين",
+        "buttonA": "https://drive.google.com/file/d/11ZygLx8zb1M2M9_VXtUWAC0VFMM5C7BP/view?usp=drive_link",
+        "buttonB": "https://drive.google.com/file/d/1ndSibYOmuJGDSUBChE7H5XSqeTamazGt/view?usp=drive_link"
+    },
+    {
+        "title": "قالب مبيعات A4 لون أخضر",
+        "buttonA": "https://drive.google.com/file/d/1i-SnjiKgbeUULzHhhUyOd2XUfhLpLs4s/view?usp=drive_link",
+        "buttonB": ""
+    },
+    {
+        "title": "قالب مبيعات A4 بسيط",
+        "buttonA": "https://drive.google.com/file/d/1YKt5MmoY2JXSYRGtHYfgKf-AiTCUyiMV/view?usp=drive_link",
+        "buttonB": ""
+    },
+    {
+        "title": "قالب مبيعات A4 بسيط أبيض",
+        "buttonA": "https://drive.google.com/file/d/1pAXfLZMRwdyTdkeMnZWnrbFzsOTfE3Zq/view?usp=drive_link",
+        "buttonB": ""
+    },
+    {
+        "title": "قالب فواتير مبيعات A4 (الصنف - السعر - الكمية - الإجمالي)",
+        "buttonA": "https://drive.google.com/file/d/1PEhxPZnenhWQWB_7YVSCXmD-HtWxg_yS/view?usp=drive_link",
+        "buttonB": ""
+    },
+    {
+        "title": "قالب مبيعات A4 أزرق",
+        "buttonA": "https://drive.google.com/file/d/1ZgFdMB_rsq-1asynS7RbYlV9BBJQiP6v/view?usp=drive_link",
+        "buttonB": ""
+    },
+    {
+        "title": "قالب مبيعات A4",
+        "buttonA": "https://drive.google.com/file/d/1YxkYbDuv9bkz59dIL-LFZtTzuPxtSElh/view?usp=drive_link",
+        "buttonB": ""
+    },
+    {
+        "title": "قالب مبيعات",
+        "buttonA": "https://drive.google.com/file/d/1DxZhOWZ7XmVzHZxP4F6UcDWCxaTRV_Ub/view?usp=drive_link",
+        "buttonB": ""
+    },
+    {
+        "title": "قالب مبيعات A4)",
+        "buttonA": "https://drive.google.com/file/d/1abRBJueqMpqnn6W3BbHBLMBiDKn9h_Bw/view?usp=drive_link",
+        "buttonB": ""
+    },
+    {
+        "title": "قالب مبيعات A4",
+        "buttonA": "https://drive.google.com/file/d/1LoPB9Nhyk5tPjVhaZfm7WRneJe7zukbi/view?usp=drive_link",
+        "buttonB": ""
+    }
 ]

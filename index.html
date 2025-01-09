@@ -164,7 +164,7 @@
 
 <script>
 // مصفوفة الألوان
-const colors = ["#FF5733", "#33FF57", "#5733FF", "#FF33A1", "#33FFF5", "#FFC533"];
+const colors = [ "#2C3E50", "#3D2C8D", "#1E2A47", "#C0392B", "#16A085", "#34495E", "#7F8C8D", "#8E44AD"];
 
 // تحميل المنتجات عند فتح الصفحة
 fetch('./products.json') // يشير إلى ملف JSON المستضاف على GitHub Pages
@@ -184,7 +184,7 @@ fetch('./products.json') // يشير إلى ملف JSON المستضاف على 
 
             // إضافة الزر فقط إذا كان رابط HTML موجودًا
             productBox.innerHTML = `
-                <div class="product-title">${product.title}</div>
+                <div class="product-title">#${index + 1} - ${product.title}</div>
                 <div class="product-buttons">
                     <a href="${product.buttonA}" target="_blank">معاينة</a>
                     <a href="${directPdfLink}" download>تحميل مباشر PDF</a>
