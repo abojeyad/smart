@@ -54,10 +54,9 @@
             justify-content: center;
         }
         .product-box {
-            position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between; /* توزيع المحتوى بين النصفين */
             align-items: center;
             width: 180px;
             height: 230px;
@@ -69,17 +68,22 @@
             transition: background-color 0.3s ease;
         }
         .product-title {
+            flex-grow: 1; /* يضمن أن العنوان يشغل النصف العلوي */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             font-size: 18px;
             color: var(--text-color);
             font-weight: bold;
-            text-align: center;
-            margin-bottom: 10px;
         }
         .product-buttons {
+            flex-grow: 1; /* يضمن أن الأزرار تبقى في النصف السفلي */
             display: flex;
             flex-direction: column;
             gap: 10px;
             width: 100%;
+            justify-content: flex-end;
             align-items: center;
         }
         .product-buttons a, .product-buttons button {
@@ -108,7 +112,6 @@
             }
         }
 
-        /* زر عائم */
         .floating-btn {
             position: fixed;
             bottom: 20px;
@@ -129,7 +132,6 @@
             background-color: var(--hover-color);
         }
 
-        /* تنسيق الملاحظة */
         .note {
             font-size: 14px;
             color: #666;
@@ -159,55 +161,48 @@
     </div>
 </div>
 
-<!-- زر عائم للتوجه إلى فورم جوجل مباشرة -->
 <div class="floating-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfwgTllxLC2P9gGcGlzEHflSazaHzm9t30OgnNoVJS1TAirmA/viewform', '_blank')">+</div>
 
 <script>
-// مصفوفة الألوان
-const colors = [ "#2C3E50", "#3D2C8D", "#1E2A47", "#C0392B", "#16A085", "#34495E", "#7F8C8D", "#8E44AD"];
+    const colors = [ "#2C3E50", "#3D2C8D", "#1E2A47", "#C0392B", "#16A085", "#34495E", "#7F8C8D", "#8E44AD"];
 
-// تحميل المنتجات عند فتح الصفحة
-fetch('./products.json') // يشير إلى ملف JSON المستضاف على GitHub Pages
-    .then(response => response.json())
-    .then(data => {
-        const container = document.getElementById('products-container');
-        data.forEach((product, index) => {
-            const productBox = document.createElement('div');
-            productBox.classList.add('product-box');
+    fetch('./products.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('products-container');
+            data.forEach((product, index) => {
+                const productBox = document.createElement('div');
+                productBox.classList.add('product-box');
 
-            // تعيين لون خلفية المنتج
-            const color = colors[index % colors.length];
-            productBox.style.backgroundColor = color;
+                const color = colors[index % colors.length];
+                productBox.style.backgroundColor = color;
 
-            const directPdfLink = convertToDirectDownloadLink(product.buttonA);
-            const directHtmlLink = product.buttonB ? convertToDirectDownloadLink(product.buttonB) : null; // التحقق من وجود الرابط
+                const directPdfLink = convertToDirectDownloadLink(product.buttonA);
+                const directHtmlLink = product.buttonB ? convertToDirectDownloadLink(product.buttonB) : null;
 
-            // إضافة الزر فقط إذا كان رابط HTML موجودًا
-            productBox.innerHTML = `
-                <div class="product-title">#${index + 1} - ${product.title}</div>
-                <div class="product-buttons">
-                    <a href="${product.buttonA}" target="_blank">معاينة</a>
-                    <a href="${directPdfLink}" download>تحميل مباشر PDF</a>
-                    ${directHtmlLink ? `<a href="${directHtmlLink}" download>تحميل مباشر - HTML</a>` : ''}
-                </div>
-            `;
+                productBox.innerHTML = `
+                    <div class="product-title">#${index + 1} - ${product.title}</div>
+                    <div class="product-buttons">
+                        <a href="${product.buttonA}" target="_blank">معاينة</a>
+                        <a href="${directPdfLink}" download>تحميل مباشر PDF</a>
+                        ${directHtmlLink ? `<a href="${directHtmlLink}" download>تحميل مباشر - HTML</a>` : ''}
+                    </div>
+                `;
 
-            container.appendChild(productBox);
-        });
-    })
-    .catch(error => console.error("Error loading products:", error));
+                container.appendChild(productBox);
+            });
+        })
+        .catch(error => console.error("Error loading products:", error));
 
-// دالة لتحويل رابط Google Drive إلى رابط تنزيل مباشر
-function convertToDirectDownloadLink(driveLink) {
-    const fileId = getFileId(driveLink);
-    return fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : driveLink;
-}
+    function convertToDirectDownloadLink(driveLink) {
+        const fileId = getFileId(driveLink);
+        return fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : driveLink;
+    }
 
-// استخراج معرف الملف من رابط Google Drive
-function getFileId(driveLink) {
-    const match = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
-    return match ? match[1] : null;
-}
+    function getFileId(driveLink) {
+        const match = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        return match ? match[1] : null;
+    }
 </script>
 
 </body>
