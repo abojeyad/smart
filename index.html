@@ -141,15 +141,21 @@
             z-index: 999;
         }
         .modal-content {
+            max-width: 80%;
+            max-height: 90%;
+            overflow-y: auto; /* السماح بالتمرير العمودي إذا كانت الصورة طويلة */
+            position: relative;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             text-align: center;
-            position: relative;
         }
         #preview-image {
-            max-width: 100%;
-            max-height: 80vh;
+            width: auto;
+            max-width: 100%; /* ضبط العرض داخل النافذة */
+            height: auto;
+            display: block;
+            margin: auto;
         }
         .close-btn {
             position: absolute;
@@ -159,12 +165,35 @@
             color: #000;
             cursor: pointer;
         }
-		.disabled {
-			background-color: #ccc !important; /* لون الخلفية رمادي */
-			color: #666 !important;          /* لون النص أفتح */
-			pointer-events: none;           /* منع النقر */
-			cursor: not-allowed;            /* مؤشر الفأرة يشير إلى عدم السماح */
-		}
+        .disabled {
+            background-color: #ccc !important;
+            color: #666 !important;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+		
+		@media only screen and (max-width: 768px) {
+    /* تحسين عرض المنتجات في الشاشات الصغيرة */
+    .product-box {
+        width: 100%; /* جعل عرض الصندوق يعرض بشكل كامل */
+        height: auto;
+    }
+    .product-title {
+        font-size: 14px; /* تقليل حجم النص */
+    }
+    .product-image img {
+        width: 100%;
+        height: auto; /* تغيير حجم الصورة بما يتناسب مع العرض */
+    }
+    .product-buttons {
+        flex-direction: column; /* عرض الأزرار بشكل عمودي */
+        gap: 10px;
+    }
+    .product-preview-btn {
+        font-size: 14px; /* تقليل حجم الخط */
+    }
+}
+
     </style>
 </head>
 <body>
