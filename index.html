@@ -159,6 +159,12 @@
             color: #000;
             cursor: pointer;
         }
+		.disabled {
+			background-color: #ccc !important; /* لون الخلفية رمادي */
+			color: #666 !important;          /* لون النص أفتح */
+			pointer-events: none;           /* منع النقر */
+			cursor: not-allowed;            /* مؤشر الفأرة يشير إلى عدم السماح */
+		}
     </style>
 </head>
 <body>
@@ -203,17 +209,17 @@
                             تحميل كصورة
                             <span class="loading-text">جار التنزيل...</span>
                         </a>
-                        ${product.buttonB ? `<a href="${convertToDirectDownloadLink(product.buttonB)}" download>
+                        <a href="${product.buttonB ? convertToDirectDownloadLink(product.buttonB) : '#'}" 
+                           class="${product.buttonB ? '' : 'disabled'}">
                             تحميل كـ HTML
                             <span class="loading-text">جار التنزيل...</span>
-                        </a>` : ''}
+                        </a>
                     </div>
                 `;
 
                 container.appendChild(productBox);
             });
 
-            // عرض الصورة في نافذة منبثقة عند النقر على زر المعاينة
             document.querySelectorAll('.product-preview-btn').forEach(button => {
                 button.addEventListener('click', function(event) {
                     event.preventDefault();
@@ -240,13 +246,14 @@
                 });
             });
 
-            // عرض رسالة "جار التنزيل..." عند النقر على أزرار التحميل
             document.querySelectorAll('.product-buttons a').forEach(button => {
-                button.addEventListener('click', function() {
-                    const loadingText = this.querySelector('.loading-text');
-                    loadingText.classList.add('active');
-                    setTimeout(() => loadingText.classList.remove('active'), 3000);
-                });
+                if (!button.classList.contains('disabled')) {
+                    button.addEventListener('click', function() {
+                        const loadingText = this.querySelector('.loading-text');
+                        loadingText.classList.add('active');
+                        setTimeout(() => loadingText.classList.remove('active'), 3000);
+                    });
+                }
             });
         })
         .catch(error => console.error("Error loading products:", error));
