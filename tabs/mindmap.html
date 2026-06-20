@@ -1,16 +1,45 @@
 <section class="tab-page" id="page-mindmap">
-  <div class="coming-soon-wrap">
-    <div class="cs-icon"><i class="fas fa-sitemap"></i></div>
+
+  <div class="page-hero" style="background:linear-gradient(135deg,#eef2ff,#e0e7ff)">
+    <i class="fas fa-diagram-project" style="font-size:2.5rem;color:#4f46e5;margin-bottom:12px"></i>
     <h1>الخريطة الذهنية للمبيعات</h1>
-    <p>هذا القسم قيد الإعداد وسيتوفر قريباً</p>
-    <div class="cs-badge">قريباً</div>
+    <p>خريطة تفصيلية لرحلة البيع الكاملة — من الجاهزية الشخصية حتى إغلاق الصفقة</p>
   </div>
+
+  <div class="content-block">
+    <div class="mm-image-wrap">
+      <img src="images/Mind_Map.jpg" alt="الخريطة الذهنية للرحلة البيعية" id="mm-image" onclick="openMindMapZoom()">
+    </div>
+    <p class="mm-hint"><i class="fas fa-magnifying-glass-plus"></i> اضغط على الصورة لتكبيرها</p>
+  </div>
+
+  <div class="mm-zoom-overlay" id="mm-zoom-overlay" onclick="closeMindMapZoom()">
+    <img src="images/Mind_Map.jpg" alt="الخريطة الذهنية للرحلة البيعية">
+  </div>
+
 </section>
 
+<script>
+window.openMindMapZoom = function(){
+  document.getElementById('mm-zoom-overlay').classList.add('open');
+};
+window.closeMindMapZoom = function(){
+  document.getElementById('mm-zoom-overlay').classList.remove('open');
+};
+</script>
+
 <style>
-.coming-soon-wrap { text-align:center; padding:80px 20px; }
-.cs-icon { width:80px; height:80px; background:#f1f5f9; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; color:#94a3b8; margin:0 auto 20px; }
-.coming-soon-wrap h1 { font-size:1.6rem; color:#0f172a; margin:0 0 8px; }
-.coming-soon-wrap p { color:#64748b; margin:0 0 20px; }
-.cs-badge { display:inline-block; background:#e2e8f0; color:#94a3b8; padding:6px 20px; border-radius:20px; font-size:.9rem; }
+.page-hero { text-align:center; padding:40px 20px; border-radius:20px; margin-bottom:32px; border:1px solid #dbeafe; }
+.page-hero h1 { font-size:1.8rem; font-weight:800; margin:0 0 8px; color:#0f172a; }
+.page-hero p { color:#475569; margin:0; }
+
+.content-block { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:28px; margin-bottom:20px; text-align:center; }
+
+.mm-image-wrap { display:flex; justify-content:center; }
+.mm-image-wrap img { max-width:100%; height:auto; border:1px solid #e2e8f0; border-radius:12px; cursor:zoom-in; }
+.mm-hint { margin:14px 0 0; font-size:.8rem; color:#94a3b8; display:flex; align-items:center; justify-content:center; gap:6px; }
+
+.mm-zoom-overlay { position:fixed; inset:0; background:rgba(15,23,42,.85); display:none; align-items:center; justify-content:center; padding:24px; z-index:1000; cursor:zoom-out; }
+.mm-zoom-overlay.open { display:flex; }
+.mm-zoom-overlay img { max-width:100%; max-height:100%; border-radius:8px; box-shadow:0 10px 40px rgba(0,0,0,.4); }
 </style>
