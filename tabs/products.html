@@ -229,6 +229,55 @@
     </div>
   </div>
 
+  <!-- جدول الأسعار الشامل -->
+  <div class="content-block">
+    <h2 class="section-title"><i class="fas fa-table"></i> جدول أسعار جميع الأنظمة والباقات</h2>
+    <p style="color:#64748b;font-size:.85rem;margin:0 0 18px;text-align:center">جميع الأسعار بالريال السعودي (ر.س) — سعر البيع لأول سنة، وسعر التجديد للسنوات التالية</p>
+
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>الباقة</th>
+            <th>سعر البيع</th>
+            <th>سعر التجديد</th>
+            <th>الحد الأدنى للتجديد</th>
+            <th>عدد المستخدمين</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="pt-group pt-erp"><td colspan="5"><i class="fas fa-calculator"></i> النظام المحاسبي ونقاط البيع SMART ERP</td></tr>
+          <tr><td>الباقة الأولى</td><td>1,500</td><td>1,200</td><td>1,000</td><td>2</td></tr>
+          <tr><td>الباقة الأساسية</td><td>3,000</td><td>1,800</td><td>1,500</td><td>2</td></tr>
+          <tr><td>الباقة المتقدمة</td><td>6,500</td><td>3,000</td><td>2,500</td><td>3</td></tr>
+          <tr><td>باقة قل مالك</td><td>10,000</td><td>5,000</td><td>4,500</td><td>3 + 50 موظف</td></tr>
+
+          <tr class="pt-group pt-rc"><td colspan="5"><i class="fas fa-utensils"></i> نظام المطاعم والكافيهات SMART R&C</td></tr>
+          <tr><td>الباقة الأساسية</td><td>4,000</td><td>1,800</td><td>1,500</td><td>2</td></tr>
+          <tr><td>الباقة المتقدمة</td><td>6,500</td><td>3,000</td><td>2,500</td><td>3</td></tr>
+          <tr><td>الباقة الكاملة</td><td>10,000</td><td>5,000</td><td>4,500</td><td>3 + 50 موظف</td></tr>
+
+          <tr class="pt-group pt-hr"><td colspan="5"><i class="fas fa-users"></i> نظام الموارد البشرية SMART HR</td></tr>
+          <tr><td>باقة 25</td><td>3,000</td><td>3,000</td><td>2,100</td><td>—</td></tr>
+          <tr><td>باقة 50</td><td>4,000</td><td>4,000</td><td>2,800</td><td>—</td></tr>
+          <tr><td>باقة 100</td><td>6,000</td><td>6,000</td><td>4,200</td><td>—</td></tr>
+          <tr><td>باقة 200</td><td>8,000</td><td>8,000</td><td>5,600</td><td>—</td></tr>
+
+          <tr class="pt-group pt-ngo"><td colspan="5"><i class="fas fa-hand-holding-heart"></i> نظام الجمعيات الخيرية SMART NGO</td></tr>
+          <tr><td>الباقة الأساسية</td><td>8,000</td><td>4,000</td><td>3,000</td><td>5</td></tr>
+          <tr><td>الباقة المتقدمة</td><td>12,000</td><td>6,000</td><td>5,000</td><td>5 + 50 موظف</td></tr>
+          <tr><td>الباقة الكاملة</td><td>15,000</td><td>7,500</td><td>6,500</td><td>5 + 50 موظف</td></tr>
+
+          <tr class="pt-group pt-extra"><td colspan="5"><i class="fas fa-plus-circle"></i> خدمات إضافية</td></tr>
+          <tr><td>فرع إضافي</td><td>1,500</td><td>1,500</td><td>1,000</td><td>1</td></tr>
+          <tr><td>مستودع مخزون</td><td>1,000</td><td>250</td><td>250</td><td>1</td></tr>
+          <tr><td>مستخدم إضافي</td><td>400</td><td>250</td><td>250</td><td>1</td></tr>
+          <tr><td>النظام المالي</td><td>3,000</td><td>2,000</td><td>1,500</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </section>
 
 <script>
@@ -331,4 +380,27 @@
 .erp-cat-9.erp-sub-heading, .erp-cat-9 i { color:#475569; }
 .erp-feat-card.erp-cat-9 { background:#f8fafc; border-color:#e2e8f0; }
 .erp-feat-card.erp-cat-9 i { background:#e2e8f0; }
+
+/* جدول الأسعار الشامل */
+.price-table-wrap { overflow-x:auto; border:1px solid #e2e8f0; border-radius:14px; }
+.price-table { width:100%; border-collapse:collapse; font-size:.85rem; white-space:nowrap; }
+.price-table thead th { background:#f8fafc; color:#475569; font-weight:700; padding:12px 16px; text-align:center; border-bottom:2px solid #e2e8f0; }
+.price-table thead th:first-child { text-align:right; }
+.price-table tbody td { padding:11px 16px; text-align:center; border-bottom:1px solid #f1f5f9; color:#334155; }
+.price-table tbody td:first-child { text-align:right; font-weight:600; }
+.price-table tbody tr:last-child td { border-bottom:none; }
+.price-table tbody tr:not(.pt-group):hover { background:#f8fafc; }
+
+.price-table tr.pt-group td { text-align:right; font-weight:700; padding:10px 16px; border-bottom:1px solid rgba(0,0,0,.06); }
+.price-table tr.pt-group i { margin-left:8px; }
+.price-table tr.pt-erp td { background:#eff6ff; color:#2563eb; }
+.price-table tr.pt-rc td { background:#fff7ed; color:#c2660f; }
+.price-table tr.pt-hr td { background:#faf5ff; color:#9333ea; }
+.price-table tr.pt-ngo td { background:#f0fdf4; color:#15803d; }
+.price-table tr.pt-extra td { background:#f8fafc; color:#64748b; }
+
+@media(max-width:700px){
+  .price-table { font-size:.78rem; }
+  .price-table thead th, .price-table tbody td { padding:9px 10px; }
+}
 </style>
