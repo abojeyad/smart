@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart ERP | الحقيبة التدريبية للموظف الجديد</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* ─── Reset & Root ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:   #2563eb;
+      --green:  #16a34a;
+      --wa-green: #25D366;
+      --wa-blue:  #34B7F1;
+      --dark:   #0f172a;
+      --mid:    #475569;
+      --light:  #f1f5f9;
+      --border: #e2e8f0;
+      --white:  #ffffff;
+      --btn-premium: #075E54;
+    }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f4f7f9;
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── Top Header ─── */
+    .top-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+    .header-brand { display:flex; align-items:center; gap:12px; }
+    .brand-logo { font-size:1.4rem; font-weight:800; color:var(--wa-blue); }
+    .brand-sep { width:1px; height:28px; background:var(--border); }
+    .brand-title { font-size:.9rem; color:var(--mid); font-weight:500; line-height:1.3; }
+    .brand-title strong { display:block; color:var(--dark); font-weight:700; }
+    .header-tag { background:var(--blue); color:#fff; font-size:.72rem; padding:4px 12px; border-radius:20px; white-space:nowrap; }
+
+    /* ─── Tab Navigation ─── */
+    .tab-nav-wrap {
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tab-nav-wrap::-webkit-scrollbar { display:none; }
+    .tab-nav {
+      display: flex;
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 14px 18px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: 'Tajawal', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--mid);
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: .2s;
+    }
+    .tab-btn i { font-size: .85rem; }
+    .tab-btn:hover { color: var(--blue); }
+    .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .tab-btn .soon { font-size:.65rem; background:#f1f5f9; color:#94a3b8; padding:2px 6px; border-radius:10px; margin-right:2px; }
+
+    /* ─── Page Loader ─── */
+    #page-loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      color: var(--mid);
+      gap: 10px;
+      font-size: .9rem;
+    }
+    #page-loader i { animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── Main Content Area ─── */
+    .main-content {
+      flex: 1;
+      max-width: 1150px;
+      margin: 24px auto;
+      padding: 0 16px 40px;
+      width: 100%;
+    }
+
+    /* ─── Shared Section Styles (used by all tabs) ─── */
+    .section-heading {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-heading i { color: var(--blue); }
+
+    /* ─── Original ERP styles preserved for products tab ─── */
+    .section-title {
+      text-align: center;
+      font-size: 1.4rem;
+      color: var(--btn-premium);
+      margin: 25px 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .section-title i { color: var(--wa-blue); font-size: 1.2rem; }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .package-card {
+      background: #fff;
+      border-radius: 15px;
+      border: 1.5px solid #d1d7db;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+    .package-card.recommended { border: 2px solid var(--wa-green); box-shadow: 0 8px 20px rgba(37,211,102,.1); transform: scale(1.01); }
+    .rec-tag { background: var(--wa-green); color: #fff; text-align: center; padding: 6px; font-weight: 700; font-size: .8rem; }
+    .card-content { padding: 18px; flex-grow: 1; }
+    .package-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .package-desc { font-size: .85rem; color: #54656f; margin-bottom: 20px; min-height: 50px; }
+    .audio-wrapper { background: #f8f9fa; border-radius: 40px; padding: 6px 12px; display: flex; align-items: center; gap: 10px; }
+    .play-btn { width:38px; height:38px; border-radius:50%; background:var(--wa-blue); border:none; color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:.9rem; }
+    .waves-area { flex-grow:1; height:18px; display:flex; align-items:center; justify-content:space-between; gap:1.5px; overflow:hidden; cursor:pointer; }
+    .bar { flex:1; background:#d1d7db; height:60%; border-radius:1px; min-width:1.5px; }
+    .bar.active { background:var(--wa-blue); }
+    .time-left { font-size:.8rem; font-weight:700; color:#4a5568; min-width:35px; text-align:left; }
+    .speed-btn { background:#e2e8f0; border:none; border-radius:10px; padding:3px 6px; font-size:.7rem; font-weight:700; cursor:pointer; }
+
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .feature-item { display:flex; align-items:center; gap:8px; background:#fdfdfd; padding:8px 12px; border-radius:8px; border:1px solid #f0f2f5; font-size:.85rem; }
+    .feature-item i { color:var(--wa-green); font-size:1rem; width:18px; text-align:center; }
+
+    .modules-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(130px,1fr)); gap:8px; margin-top:15px; }
+    .module-tag { background:#f1f5f9; color:#475569; padding:10px 6px; border-radius:8px; text-align:center; font-size:.8rem; font-weight:500; border:1px solid #e2e8f0; transition:.2s; display:flex; align-items:center; justify-content:center; min-height:40px; }
+    .module-tag:hover { background:var(--btn-premium); color:#fff; transform:translateY(-2px); }
+
+    /* ─── Footer ─── */
+    footer { text-align:center; padding:24px; color:#94a3b8; font-size:.8rem; background:var(--white); border-top:1px solid var(--border); }
+
+    /* ─── Mobile ─── */
+    @media(max-width:600px) {
+      .top-header { padding:12px 14px; }
+      .brand-logo { font-size:1.2rem; }
+      .header-tag { display:none; }
+      .tab-btn { padding:12px 12px; font-size:.8rem; }
+      .main-content { margin:16px auto; padding:0 10px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ TOP HEADER ═══ -->
+<header class="top-header">
+  <div class="header-brand">
+    <div class="brand-logo">Smart ERP</div>
+    <div class="brand-sep"></div>
+    <div class="brand-title">
+      <strong>الحقيبة التدريبية للموظف الجديد</strong>
+      إدارة المبيعات – سمارت لايف
+    </div>
+  </div>
+  <div class="header-tag"><i class="fas fa-graduation-cap"></i> Learning Portal</div>
+</header>
+
+<!-- ═══ TAB NAVIGATION ═══ -->
+<nav class="tab-nav-wrap">
+  <div class="tab-nav">
+    <button class="tab-btn active" data-tab="home">
+      <i class="fas fa-home"></i> الرئيسية
+    </button>
+    <button class="tab-btn" data-tab="company">
+      <i class="fas fa-building"></i> معرفة الشركة
+    </button>
+    <button class="tab-btn" data-tab="products">
+      <i class="fas fa-box-open"></i> معرفة المنتج
+    </button>
+    <button class="tab-btn" data-tab="market">
+      <i class="fas fa-users"></i> السوق والعميل
+    </button>
+    <button class="tab-btn" data-tab="competitors">
+      <i class="fas fa-chess"></i> المنافس
+    </button>
+    <button class="tab-btn" data-tab="sales">
+      <i class="fas fa-chart-line"></i> المبيعات
+    </button>
+    <button class="tab-btn" data-tab="mindmap">
+      <i class="fas fa-sitemap"></i> الخريطة الذهنية للمبيعات <span class="soon">قريباً</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ CONTENT AREA ═══ -->
+<main class="main-content" id="main-content">
+  <div id="page-loader"><i class="fas fa-spinner"></i> جارٍ التحميل...</div>
+</main>
+
+<footer>
+  <p>جميع الحقوق محفوظة &copy; 2026 – Smart ERP | الحقيبة التدريبية لإدارة المبيعات</p>
+</footer>
+
+<script>
+// ─── Tab Sources ───
+const TAB_SOURCES = {
+  home:        'tabs/home.html',
+  company:     'tabs/company.html',
+  products:    'tabs/products.html',
+  market:      'tabs/market.html',
+  competitors: 'tabs/competitors.html',
+  sales:       'tabs/sales.html',
+  mindmap:     'tabs/mindmap.html',
+};
+
+// ─── Cache ───
+const cache = {};
+
+// ─── Active audio tracker ───
+let activeAudioId = null;
+
+// ─── Load & render a tab ───
+async function switchTab(tabId) {
+  // Update nav buttons
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
+
+  const main = document.getElementById('main-content');
+  main.innerHTML = '<div id="page-loader"><i class="fas fa-spinner"></i> جارٍ التحميل...</div>';
+
+  const src = TAB_SOURCES[tabId];
+  if (!src) return;
+
+  try {
+    // Fetch with cache
+    if (!cache[src]) {
+      const res = await fetch(src);
+      cache[src] = await res.text();
+    }
+
+    // Create a container and inject HTML
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = cache[src];
+
+    main.innerHTML = '';
+    [...wrapper.childNodes].forEach(n => main.appendChild(n.cloneNode(true)));
+
+    // Run inline scripts in the injected HTML
+    main.querySelectorAll('script').forEach(oldScript => {
+      const s = document.createElement('script');
+      s.textContent = oldScript.textContent;
+      oldScript.parentNode.replaceChild(s, oldScript);
+    });
+
+    // If products tab – init audio player
+    if (tabId === 'products') initAudio();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch(e) {
+    main.innerHTML = `<p style="color:red;text-align:center;padding:40px">حدث خطأ أثناء تحميل المحتوى.</p>`;
+  }
+}
+
+// ─── Audio Player (from original site) ───
+const audioData = [
+  { id:0, name:"الباقة الأولى (MINI)",     desc:"مثالية للمشاريع الناشئة والخدمات التي تتطلب فواتير ضريبية مبسطة.", audio:"audio/audio1.m4a", rec:false },
+  { id:1, name:"الباقة الأساسية (POS)",    desc:"الخيار الأمثل للمحلات التجارية والمطاعم مع إدارة كاملة للمخزون.",   audio:"audio/audio2.m4a", rec:false },
+  { id:2, name:"الباقة المتقدمة (SLAS)",   desc:"مصممة للشركات المتوسطة التي تحتاج تقارير مالية وقوائم جرد متقدمة.", audio:"audio/audio3.m4a", rec:false },
+  { id:3, name:"الباقة الكاملة (PRO)",     desc:"حل متكامل يشمل المحاسبة، الموارد البشرية، وجميع مديولات النظام.",   audio:"audio/audio4.m4a", rec:false },
+];
+
+function initAudio() {
+  const grid = document.getElementById('grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  audioData.forEach(pkg => {
+    let waves = '';
+    for(let i=0; i<40; i++) {
+      const h = Math.floor(Math.random()*16)+4;
+      waves += `<div class="bar" style="height:${h}px"></div>`;
+    }
+    const card = document.createElement('div');
+    card.className = `package-card ${pkg.rec ? 'recommended' : ''}`;
+    card.innerHTML = `
+      ${pkg.rec ? '<div class="rec-tag"><i class="fas fa-thumbs-up"></i> الخيار الموصى به</div>' : ''}
+      <div class="card-content">
+        <div class="package-name">${pkg.name}</div>
+        <p class="package-desc">${pkg.desc}</p>
+        <div class="audio-wrapper" id="row-${pkg.id}">
+          <audio id="audio-${pkg.id}" src="${pkg.audio}" preload="metadata"></audio>
+          <button class="play-btn" onclick="playAudio(${pkg.id})"><i class="fas fa-play"></i></button>
+          <div class="waves-area" onclick="seekAudio(event,${pkg.id})">${waves}</div>
+          <div class="time-left" id="time-${pkg.id}">0:00</div>
+          <button class="speed-btn" id="speed-${pkg.id}" onclick="toggleSpeed(${pkg.id})">1x</button>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+
+    const audio = document.getElementById(`audio-${pkg.id}`);
+    audio.addEventListener('loadedmetadata', () => {
+      document.getElementById(`time-${pkg.id}`).innerText = fmtTime(audio.duration);
+    });
+    audio.addEventListener('ended', () => {
+      document.querySelector(`#row-${pkg.id} .play-btn i`).className = 'fas fa-play';
+      document.querySelectorAll(`#row-${pkg.id} .bar`).forEach(b => b.classList.remove('active'));
+      document.getElementById(`time-${pkg.id}`).innerText = fmtTime(audio.duration);
+    });
+  });
+}
+
+window.playAudio = function(id) {
+  const audio = document.getElementById(`audio-${id}`);
+  const btnIcon = document.querySelector(`#row-${id} .play-btn i`);
+  document.querySelectorAll('audio').forEach((a, idx) => {
+    if(idx !== id){ a.pause(); const bi = document.querySelectorAll('.play-btn i')[idx]; if(bi) bi.className='fas fa-play'; }
+  });
+  if(audio.paused){ audio.play(); btnIcon.className='fas fa-pause'; } 
+  else { audio.pause(); btnIcon.className='fas fa-play'; }
+  audio.ontimeupdate = () => {
+    const rem = audio.duration - audio.currentTime;
+    document.getElementById(`time-${id}`).innerText = fmtTime(rem);
+    const progress = (audio.currentTime / audio.duration) * 40;
+    document.querySelectorAll(`#row-${id} .bar`).forEach((b,i) => b.classList.toggle('active', i < progress));
+  };
+};
+
+window.seekAudio = function(e, id) {
+  const audio = document.getElementById(`audio-${id}`);
+  const rect = e.currentTarget.getBoundingClientRect();
+  const ratio = (rect.right - e.clientX) / rect.width;
+  audio.currentTime = ratio * audio.duration;
+};
+
+window.toggleSpeed = function(id) {
+  const audio = document.getElementById(`audio-${id}`);
+  const btn = document.getElementById(`speed-${id}`);
+  audio.playbackRate = audio.playbackRate === 1 ? 2 : 1;
+  btn.innerText = audio.playbackRate + 'x';
+};
+
+function fmtTime(s) {
+  if(isNaN(s)) return '0:00';
+  return `${Math.floor(s/60)}:${('0'+Math.floor(s%60)).slice(-2)}`;
+}
+
+// ─── Wire up nav buttons ───
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
+
+// ─── Global helper for tabs to trigger navigation ───
+window.switchTab = switchTab;
+
+// ─── Initial load ───
+switchTab('home');
+</script>
+</body>
+</html>
