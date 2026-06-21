@@ -32,6 +32,11 @@
     }
 
     /* ─── Top Header ─── */
+    .site-sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
     .top-header {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -40,9 +45,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
       box-shadow: 0 1px 8px rgba(0,0,0,.05);
     }
     .header-brand { display:flex; align-items:center; gap:12px; }
@@ -192,6 +194,7 @@
 <body>
 
 <!-- ═══ TOP HEADER ═══ -->
+<div class="site-sticky-top">
 <header class="top-header">
   <div class="header-brand">
     <div class="brand-logo">Smart ERP</div>
@@ -230,6 +233,7 @@
     </button>
   </div>
 </nav>
+</div>
 
 <!-- ═══ CONTENT AREA ═══ -->
 <main class="main-content" id="main-content">
@@ -245,7 +249,7 @@
 // Lets an already-open / browser-cached copy of this page detect that a
 // newer version exists on the server and reload itself automatically,
 // so visitors never need to manually clear site data.
-const SITE_VERSION = '2026-06-21.1';
+const SITE_VERSION = '2026-06-21.2';
 
 (function watchForUpdates() {
   async function check() {
