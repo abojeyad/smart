@@ -241,6 +241,27 @@
 </footer>
 
 <script>
+// ─── Site version: bump this string on every deploy ───
+// Lets an already-open / browser-cached copy of this page detect that a
+// newer version exists on the server and reload itself automatically,
+// so visitors never need to manually clear site data.
+const SITE_VERSION = '2026-06-21.1';
+
+(function watchForUpdates() {
+  async function check() {
+    try {
+      const res = await fetch(location.pathname + location.search, { cache: 'no-store' });
+      const html = await res.text();
+      const m = html.match(/SITE_VERSION\s*=\s*'([^']+)'/);
+      if (m && m[1] !== SITE_VERSION) location.reload();
+    } catch (e) { /* offline or network error — ignore */ }
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') check();
+  });
+  setTimeout(check, 5000);
+})();
+
 // ─── Tab Sources ───
 const TAB_SOURCES = {
   home:        'tabs/home.html',
@@ -270,9 +291,10 @@ async function switchTab(tabId) {
   if (!src) return;
 
   try {
-    // Fetch with cache
+    // Fetch with in-memory cache for this session, but always revalidate against the network
+    // (avoids serving a stale tab fragment from the browser's HTTP cache)
     if (!cache[src]) {
-      const res = await fetch(src);
+      const res = await fetch(src, { cache: 'no-cache' });
       cache[src] = await res.text();
     }
 
