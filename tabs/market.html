@@ -2,7 +2,7 @@
 
   <div class="page-hero" style="background:linear-gradient(135deg,#eef2ff,#e0e7ff)">
     <i class="fas fa-users" style="font-size:2.5rem;color:#4f46e5;margin-bottom:12px"></i>
-    <h1>معرفة السوق والعميل</h1>
+    <h1>معرفة العميل</h1>
     <p>من هو عميلنا، وما هي الأنشطة التي نستهدفها، وكيف يقيّم المندوب الفرصة</p>
   </div>
 
@@ -12,11 +12,23 @@
     <p class="block-text">عميلنا المستهدف بشكل أساسي هو:</p>
     <div class="target-highlight">
       <i class="fas fa-store"></i>
-      <span>قطاع التجزئة (Retail Sector) داخل المملكة العربية السعودية</span>
+      <span>قطاع التجزئة (Retail Sector)</span>
     </div>
     <p class="block-text" style="margin-top:14px">
       ويشمل الأنشطة التجارية التي تعتمد على البيع المباشر للعملاء، وغالباً تستخدم أو تحتاج إلى الفاتورة الإلكترونية وإدارة المبيعات والمخزون.
     </p>
+
+    <h3 class="sales-sub-heading" style="margin-top:18px"><i class="fas fa-clipboard-check"></i> معايير التأهيل</h3>
+    <p class="block-text">يتم التحقق من العميل عبر:</p>
+    <div class="icp-criteria-row">
+      <div class="activity-tag"><i class="fas fa-industry"></i> القطاع</div>
+      <div class="activity-tag"><i class="fas fa-store"></i> النشاط</div>
+      <div class="activity-tag"><i class="fas fa-ruler-combined"></i> الحجم</div>
+    </div>
+
+    <div class="note-box" style="margin-top:16px">
+      <p style="margin:0">ملاحظة: قد يكون العميل محل جديد قيد الافتتاح، أو محل قائم يعاني من مشاكل في نظامه الحالي، أو لديه رغبة في تطوير نظامه وإضافة مزايا وخدمات إضافية.</p>
+    </div>
   </div>
 
   <!-- الأنشطة المستهدفة -->
@@ -49,25 +61,12 @@
     </div>
   </div>
 
-  <!-- تعريف العميل المثالي -->
-  <div class="content-block">
-    <h2 class="block-title"><i class="fas fa-bullseye"></i> تعريف العميل المثالي</h2>
-    <p class="block-text">عميلنا المثالي هو:</p>
-    <div class="criteria-list">
-      <div class="criteria-item"><i class="fas fa-check-circle"></i><span>نشاط قائم بالفعل ويبيع بشكل يومي</span></div>
-      <div class="criteria-item"><i class="fas fa-check-circle"></i><span>لديه عمليات مالية متكررة (بيع / شراء / مخزون)</span></div>
-      <div class="criteria-item"><i class="fas fa-check-circle"></i><span>يستخدم نظام يدوي أو نظام ضعيف</span></div>
-      <div class="criteria-item"><i class="fas fa-check-circle"></i><span>يعاني من ضعف في الرقابة أو التقارير</span></div>
-      <div class="criteria-item"><i class="fas fa-check-circle"></i><span>لديه رغبة في التطوير أو التوسع</span></div>
-    </div>
-  </div>
-
   <!-- ملاحظة مهمة للمندوب -->
   <div class="content-block">
     <h2 class="block-title"><i class="fas fa-exclamation-triangle" style="color:#d97706"></i> ملاحظة مهمة للمندوب</h2>
     <div class="note-box">
-      <p>إذا كان النشاط خارج قطاع التجزئة، يتم تقييمه أولاً قبل العرض، لأن تركيزنا الأساسي هو:</p>
-      <div class="note-formula">Retail + نقاط بيع + إدارة مخزون + فاتورة إلكترونية</div>
+      <p>إذا كان النشاط خارج قطاع التجزئة أو المحاسبة، يتم تقييمه أولاً قبل العرض، لأن تركيزنا الأساسي هو:</p>
+      <div class="note-formula">نقاط بيع + إدارة مخزون + فاتورة إلكترونية + محاسبة</div>
     </div>
   </div>
 
@@ -105,17 +104,18 @@
 .target-highlight { display:flex; align-items:center; gap:12px; background:#eef2ff; border:1.5px solid #c7d2fe; border-radius:12px; padding:16px 18px; font-weight:700; color:#4338ca; font-size:1rem; }
 .target-highlight i { font-size:1.3rem; }
 
+.sales-sub-heading { font-size:.95rem; font-weight:700; color:#475569; margin:0 0 10px; display:flex; align-items:center; gap:8px; }
+.sales-sub-heading i { color:#4f46e5; }
+
+.icp-criteria-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+
 .activity-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:8px; margin-top:14px; }
 .activity-tag { background:#f1f5f9; color:#475569; padding:10px 12px; border-radius:8px; font-size:.85rem; font-weight:500; border:1px solid #e2e8f0; display:flex; align-items:center; gap:8px; }
 .activity-tag i { color:#4f46e5; width:16px; text-align:center; flex-shrink:0; }
 
-.criteria-list { display:flex; flex-direction:column; gap:10px; margin-top:12px; }
-.criteria-item { display:flex; align-items:center; gap:10px; background:#f0fdf4; border:1px solid #dcfce7; border-radius:10px; padding:12px 16px; font-size:.9rem; color:#166534; }
-.criteria-item i { color:#16a34a; font-size:1rem; }
-
 .note-box { background:#fffbeb; border:1.5px solid #fde68a; border-radius:12px; padding:18px 20px; }
 .note-box p { margin:0 0 12px; color:#92400e; line-height:1.8; }
-.note-formula { background:#fff; border:1px dashed #d97706; border-radius:10px; padding:12px 16px; font-weight:700; color:#92400e; text-align:center; font-size:.95rem; direction:ltr; }
+.note-formula { background:#fff; border:1px dashed #d97706; border-radius:10px; padding:12px 16px; font-weight:700; color:#92400e; text-align:center; font-size:.95rem; }
 
 .rule-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px; }
 .rule-card { border-radius:14px; padding:20px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px; }
