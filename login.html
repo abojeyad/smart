@@ -80,10 +80,16 @@
     </form>
   </div>
 
+<script src="auth-client.js"></script>
 <script>
 const form = document.getElementById('login-form');
 const errorMsg = document.getElementById('error-msg');
 const submitBtn = document.getElementById('submit-btn');
+
+// If already logged in with a still-active account, skip straight to the site.
+(async () => {
+  if (getToken() && (await getSessionUser())) location.href = '/';
+})();
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -94,19 +100,21 @@ form.addEventListener('submit', async (e) => {
   const username = document.getElementById('username').value.trim();
 
   try {
-    const res = await fetch('/.netlify/functions/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username }),
-    });
-    const data = await res.json();
-
-    if (res.ok) {
-      location.href = '/';
-    } else {
-      errorMsg.textContent = data.error || 'تعذر تسجيل الدخول';
+    const user = await findUser(username);
+    if (!user || user.status !== 'active') {
+      errorMsg.textContent = 'اسم المستخدم غير صحيح أو غير مفعّل';
       errorMsg.style.display = 'block';
+      return;
     }
+
+    const token = await createSession(username);
+    if (!token) {
+      errorMsg.textContent = 'تعذر تسجيل الدخول، حاول مرة أخرى';
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    location.href = '/';
   } catch (err) {
     errorMsg.textContent = 'حدث خطأ في الاتصال، حاول مرة أخرى';
     errorMsg.style.display = 'block';

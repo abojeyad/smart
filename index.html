@@ -254,6 +254,7 @@
   <p>جميع الحقوق محفوظة &copy; 2026 – Smart ERP | الحقيبة التدريبية لإدارة المبيعات</p>
 </footer>
 
+<script src="auth-client.js"></script>
 <script>
 // ─── Site version: bump this string on every deploy ───
 // Lets an already-open / browser-cached copy of this page detect that a
@@ -276,19 +277,8 @@ const SITE_VERSION = '2026-06-21.2';
   setTimeout(check, 5000);
 })();
 
-// ─── Current user info (name / admin link) ───
-(async function loadCurrentUser() {
-  try {
-    const res = await fetch('/.netlify/functions/me');
-    if (!res.ok) return;
-    const me = await res.json();
-    document.getElementById('user-name').textContent = me.name || me.username;
-    if (me.is_admin) document.getElementById('admin-link').style.display = 'flex';
-  } catch (e) { /* ignore */ }
-})();
-
 document.getElementById('logout-btn').addEventListener('click', async () => {
-  try { await fetch('/.netlify/functions/logout', { method: 'POST' }); } catch (e) {}
+  await deleteSession();
   location.href = '/login.html';
 });
 
@@ -442,8 +432,18 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 // ─── Global helper for tabs to trigger navigation ───
 window.switchTab = switchTab;
 
-// ─── Initial load ───
-switchTab('home');
+// ─── Require an active session before showing anything ───
+// Note: this is a soft, client-side gate (see project notes) — it stops
+// casual/unauthorized use, but does not protect the static files themselves.
+(async function init() {
+  const user = await requireSession();
+  if (!user) return; // requireSession() already redirected to /login.html
+
+  document.getElementById('user-name').textContent = user.name || user.username;
+  if (user.is_admin) document.getElementById('admin-link').style.display = 'flex';
+
+  switchTab('home');
+})();
 </script>
 </body>
 </html>
