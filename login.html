@@ -88,7 +88,7 @@ const submitBtn = document.getElementById('submit-btn');
 
 // If already logged in with a still-active account, skip straight to the site.
 (async () => {
-  if (getToken() && (await getSessionUser())) location.href = '/';
+  if (getToken() && (await getSessionUser())) location.href = 'index.html';
 })();
 
 form.addEventListener('submit', async (e) => {
@@ -114,7 +114,7 @@ form.addEventListener('submit', async (e) => {
       return;
     }
 
-    location.href = '/';
+    location.href = 'index.html';
   } catch (err) {
     errorMsg.textContent = 'حدث خطأ في الاتصال، حاول مرة أخرى';
     errorMsg.style.display = 'block';

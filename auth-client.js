@@ -143,7 +143,7 @@ async function requireSession() {
   const user = await getSessionUser();
   if (!user) {
     clearToken();
-    location.href = '/login.html';
+    location.href = 'login.html';
     return null;
   }
   return user;

@@ -208,7 +208,7 @@
     </div>
   </div>
   <div class="header-user" id="header-user">
-    <a href="/admin.html" id="admin-link" style="display:none;"><i class="fas fa-user-shield"></i> الإدارة</a>
+    <a href="admin.html" id="admin-link" style="display:none;"><i class="fas fa-user-shield"></i> الإدارة</a>
     <span id="user-name"></span>
     <button id="logout-btn" title="تسجيل الخروج"><i class="fas fa-sign-out-alt"></i></button>
   </div>
@@ -276,7 +276,7 @@ const SITE_VERSION = '2026-06-21.2';
 
 document.getElementById('logout-btn').addEventListener('click', async () => {
   await deleteSession();
-  location.href = '/login.html';
+  location.href = 'login.html';
 });
 
 // ─── Tab Sources ───
