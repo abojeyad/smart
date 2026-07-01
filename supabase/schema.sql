@@ -22,15 +22,11 @@ alter table sessions enable row level security;
 insert into users (name, username, status, is_admin)
 values ('abo jeyad', 'sm@smarterp.top', 'active', true);
 
--- ── Phase 1: site hosted on GitHub Pages (no server) ──
--- The browser talks to Supabase directly with the public/anon key, so the
--- checks below run *inside Postgres* and cannot be bypassed by editing the
--- page's JavaScript. This is what makes the login gate real even without a
--- server, while write access to `users` (add/disable/delete) stays closed —
--- an anon key is inherently public, so it must never be allowed to modify
--- who has access. Those actions are done via the Supabase Table Editor for
--- now, or through the Netlify admin API (netlify/functions/admin-users.ts)
--- once the site is later connected to Netlify.
+-- The whole site (login + admin CRUD) runs on GitHub Pages with no server:
+-- the browser talks to Supabase directly using the public/anon key, and
+-- Postgres itself enforces every rule below via Row Level Security. None of
+-- this can be bypassed by editing the page's JavaScript, because the checks
+-- re-run inside the database on every request, not in the browser.
 
 create policy "anon_select_users" on users
   for select
@@ -47,6 +43,9 @@ create policy "anon_delete_sessions" on sessions
   to anon
   using (true);
 
+-- Login: Postgres rejects the session insert unless the username currently
+-- exists and is active — a disabled/deleted user cannot get a session no
+-- matter what the client sends.
 create policy "anon_insert_session_for_active_user" on sessions
   for insert
   to anon
@@ -57,6 +56,38 @@ create policy "anon_insert_session_for_active_user" on sessions
     )
   );
 
--- ── Phase 2: once connected to Netlify ──
--- Netlify Functions authenticate with the service_role key, which bypasses
--- RLS entirely, so no additional policies are needed for the admin API.
+-- Admin CRUD: the browser sends its session token as the X-Session-Token
+-- header on every write to `users`. This function looks that token up live
+-- and only returns true if it belongs to a currently-active admin — so
+-- adding/disabling/deleting users from admin.html is genuinely enforced by
+-- the database, not just hidden by the page's UI.
+create or replace function current_session_is_admin()
+returns boolean
+language sql
+stable
+as $$
+  select exists (
+    select 1
+    from sessions s
+    join users u on u.username = s.username
+    where s.token = (current_setting('request.headers', true)::json ->> 'x-session-token')
+      and u.status = 'active'
+      and u.is_admin = true
+  );
+$$;
+
+create policy "admin_insert_users" on users
+  for insert
+  to anon
+  with check (current_session_is_admin());
+
+create policy "admin_update_users" on users
+  for update
+  to anon
+  using (current_session_is_admin())
+  with check (current_session_is_admin());
+
+create policy "admin_delete_users" on users
+  for delete
+  to anon
+  using (current_session_is_admin());

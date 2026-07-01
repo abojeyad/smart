@@ -75,6 +75,58 @@ async function getSessionUser() {
   return users[0];
 }
 
+// ── Admin CRUD (add/toggle/delete users) ──
+// Writes to `users` are only accepted by Postgres if X-Session-Token belongs
+// to a currently-active admin (enforced by RLS policies + current_session_is_admin()).
+// Sending a fake or missing token, or editing this file in DevTools, cannot
+// bypass that — the check happens inside the database on every request.
+function authHeaders() {
+  return { ...SB_HEADERS, 'X-Session-Token': getToken() || '' };
+}
+
+async function adminListUsers(q) {
+  let url = `${SUPABASE_URL}/rest/v1/users?select=id,name,username,status,is_admin,created_at&order=created_at.desc`;
+  if (q) {
+    const like = encodeURIComponent(`%${q}%`);
+    url += `&or=(name.ilike.${like},username.ilike.${like})`;
+  }
+  const res = await fetch(url, { headers: SB_HEADERS });
+  if (!res.ok) return [];
+  return res.json();
+}
+
+async function adminAddUser({ name, username, is_admin }) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/users`, {
+    method: 'POST',
+    headers: { ...authHeaders(), 'Content-Type': 'application/json', Prefer: 'return=representation' },
+    body: JSON.stringify({ name, username, status: 'active', is_admin: Boolean(is_admin) }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    const msg = err.code === '23505' ? 'اسم المستخدم مستخدم مسبقًا' : (err.message || 'تعذر إنشاء المستخدم');
+    return { ok: false, error: msg };
+  }
+  const rows = await res.json();
+  return { ok: true, data: rows[0] };
+}
+
+async function adminUpdateUser(id, patch) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/users?id=eq.${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(patch),
+  });
+  return { ok: res.ok };
+}
+
+async function adminDeleteUser(id) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/users?id=eq.${encodeURIComponent(id)}`, {
+    method: 'DELETE',
+    headers: authHeaders(),
+  });
+  return { ok: res.ok };
+}
+
 async function deleteSession() {
   const token = getToken();
   clearToken();

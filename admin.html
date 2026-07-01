@@ -57,11 +57,6 @@
 
   <div id="admin-area" style="display:none;">
     <div id="msg"></div>
-    <div id="write-notice" style="display:none;background:#fffbeb;color:#92400e;border:1px solid #fde68a;padding:10px 12px;border-radius:8px;font-size:.82rem;margin-bottom:14px;">
-      <i class="fas fa-circle-info"></i> الموقع غير متصل بـ Netlify بعد، لذلك الإضافة/التفعيل/الحذف معطّلة هنا مؤقتًا.
-      نفّذ هذه العمليات حاليًا من <a href="https://supabase.com/dashboard/project/fkwykgjyxeebescxnttf/editor" target="_blank" rel="noopener">محرر جداول Supabase</a>،
-      وستعمل هذه الأزرار تلقائيًا بمجرد ربط Netlify لاحقًا.
-    </div>
 
     <div class="card">
       <div class="add-form">
@@ -105,24 +100,6 @@ function showMsg(text, type) {
   setTimeout(() => { msgBox.className = ''; msgBox.textContent = ''; }, 4000);
 }
 
-// True once we've confirmed the Netlify admin API actually responds
-// (i.e. the site has been connected to Netlify). Until then, writes
-// fall back to a "use the Supabase table editor" notice.
-let netlifyAvailable = null;
-
-async function isNetlifyAvailable() {
-  if (netlifyAvailable !== null) return netlifyAvailable;
-  try {
-    const res = await fetch('/.netlify/functions/admin-users', { method: 'GET' });
-    const contentType = res.headers.get('content-type') || '';
-    netlifyAvailable = contentType.includes('application/json');
-  } catch {
-    netlifyAvailable = false;
-  }
-  document.getElementById('write-notice').style.display = netlifyAvailable ? 'none' : 'block';
-  return netlifyAvailable;
-}
-
 async function checkAdmin() {
   const user = await requireSession();
   if (!user) return; // already redirected to /login.html
@@ -132,19 +109,12 @@ async function checkAdmin() {
     return;
   }
   document.getElementById('admin-area').style.display = 'block';
-  isNetlifyAvailable();
   loadUsers();
 }
 
 async function loadUsers() {
   const q = document.getElementById('search-input').value.trim();
-  let url = `${SUPABASE_URL}/rest/v1/users?select=id,name,username,status,is_admin,created_at&order=created_at.desc`;
-  if (q) {
-    const like = encodeURIComponent(`%${q}%`);
-    url += `&or=(name.ilike.${like},username.ilike.${like})`;
-  }
-  const res = await fetch(url, { headers: SB_HEADERS });
-  const users = await res.json();
+  const users = await adminListUsers(q);
   renderUsers(users);
 }
 
@@ -175,52 +145,32 @@ function escapeHtml(str) {
 }
 
 document.getElementById('add-btn').addEventListener('click', async () => {
-  if (!(await isNetlifyAvailable())) {
-    showMsg('غير متاح حاليًا — أضف المستخدم من محرر جداول Supabase', 'error');
-    return;
-  }
-
   const name = document.getElementById('new-name').value.trim();
   const username = document.getElementById('new-username').value.trim();
   const is_admin = document.getElementById('new-is-admin').checked;
   if (!name || !username) { showMsg('الاسم واسم المستخدم مطلوبان', 'error'); return; }
 
-  const res = await fetch('/.netlify/functions/admin-users', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, username, is_admin }),
-  });
-  const data = await res.json();
-  if (res.ok) {
+  const result = await adminAddUser({ name, username, is_admin });
+  if (result.ok) {
     document.getElementById('new-name').value = '';
     document.getElementById('new-username').value = '';
     document.getElementById('new-is-admin').checked = false;
     showMsg('تمت إضافة المستخدم', 'success');
     loadUsers();
   } else {
-    showMsg(data.error || 'تعذر إنشاء المستخدم', 'error');
+    showMsg(result.error || 'تعذر إنشاء المستخدم', 'error');
   }
 });
 
 document.getElementById('users-tbody').addEventListener('click', async (e) => {
   const toggleBtn = e.target.closest('.toggle-btn');
   const deleteBtn = e.target.closest('.delete-btn');
-  if (!toggleBtn && !deleteBtn) return;
-
-  if (!(await isNetlifyAvailable())) {
-    showMsg('غير متاح حاليًا — نفّذ هذا التغيير من محرر جداول Supabase', 'error');
-    return;
-  }
 
   if (toggleBtn) {
     const id = toggleBtn.dataset.id;
     const newStatus = toggleBtn.dataset.status === 'active' ? 'inactive' : 'active';
-    const res = await fetch(`/.netlify/functions/admin-users?id=${encodeURIComponent(id)}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status: newStatus }),
-    });
-    if (res.ok) { showMsg('تم تحديث الحالة', 'success'); loadUsers(); }
+    const result = await adminUpdateUser(id, { status: newStatus });
+    if (result.ok) { showMsg('تم تحديث الحالة', 'success'); loadUsers(); }
     else showMsg('تعذر التحديث', 'error');
   }
 
@@ -228,8 +178,8 @@ document.getElementById('users-tbody').addEventListener('click', async (e) => {
     const id = deleteBtn.dataset.id;
     const name = deleteBtn.dataset.name;
     if (!confirm(`هل أنت متأكد من حذف "${name}"؟ لا يمكن التراجع عن هذا الإجراء.`)) return;
-    const res = await fetch(`/.netlify/functions/admin-users?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
-    if (res.ok) { showMsg('تم الحذف', 'success'); loadUsers(); }
+    const result = await adminDeleteUser(id);
+    if (result.ok) { showMsg('تم الحذف', 'success'); loadUsers(); }
     else showMsg('تعذر الحذف', 'error');
   }
 });
